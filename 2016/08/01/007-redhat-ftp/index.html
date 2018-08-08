@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>RedHat下配置FTP工具 | 道虽逊，不行不至。事虽小，不为不成。</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="啰嗦今天在RedHat上装FTP时遇到不明觉厉的一点是selinux 开启着，查了N个方法才找到这个原因，可恶。 下载安装下载地址请根据自己的需要自行下载所需版本。安装1rpm  –ivh  vsftpd-2.2.2-21.el6.x86_64.rpm">
+<meta name="keywords" content="RedHat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RedHat下配置FTP工具">
+<meta property="og:url" content="http://yoursite.com/2016/08/01/007-redhat-ftp/index.html">
+<meta property="og:site_name" content="道虽逊，不行不至。事虽小，不为不成。">
+<meta property="og:description" content="啰嗦今天在RedHat上装FTP时遇到不明觉厉的一点是selinux 开启着，查了N个方法才找到这个原因，可恶。 下载安装下载地址请根据自己的需要自行下载所需版本。安装1rpm  –ivh  vsftpd-2.2.2-21.el6.x86_64.rpm">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2016-08-01T13:04:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RedHat下配置FTP工具">
+<meta name="twitter:description" content="啰嗦今天在RedHat上装FTP时遇到不明觉厉的一点是selinux 开启着，查了N个方法才找到这个原因，可恶。 下载安装下载地址请根据自己的需要自行下载所需版本。安装1rpm  –ivh  vsftpd-2.2.2-21.el6.x86_64.rpm">
+  
+    <link rel="alternate" href="/atom.xml" title="道虽逊，不行不至。事虽小，不为不成。" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">道虽逊，不行不至。事虽小，不为不成。</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-007-redhat-ftp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/01/007-redhat-ftp/" class="article-date">
+  <time datetime="2016-08-01T12:30:37.000Z" itemprop="datePublished">2016-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RedHat下配置FTP工具
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="啰嗦"><a href="#啰嗦" class="headerlink" title="啰嗦"></a>啰嗦</h2><p>今天在RedHat上装FTP时遇到不明觉厉的一点是selinux 开启着，查了N个方法才找到这个原因，可恶。</p>
+<h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p><a href="http://rpmfind.net/linux/rpm2html/search.php?query=vsftpd" target="_blank" rel="noopener">下载地址</a>请根据自己的需要自行下载所需版本。<br>安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm  –ivh  vsftpd-2.2.2-21.el6.x86_64.rpm</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>相关配置文件有 /etc/vsftpd/vsftpd.conf，/etc/vsftpd.ftpusers，/etc/vsftpd.user_list,在配置FTP服务器时,主要是修改这些文件中的相关语句.下面重点说下vsftpd.conf配置文件，它的主要配置信息如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Example config file /etc/vsftpd/vsftpd.conf</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The default compiled in settings are fairly paranoid. This sample file</span></span><br><span class="line"><span class="comment"># loosens things up a bit, to make the ftp daemon more usable.</span></span><br><span class="line"><span class="comment"># Please see vsftpd.conf.5 for all compiled in defaults.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># READ THIS: This example file is NOT an exhaustive list of vsftpd options.</span></span><br><span class="line"><span class="comment"># Please read the vsftpd.conf.5 manual page to get a full idea of vsftpd's</span></span><br><span class="line"><span class="comment"># capabilities.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Allow anonymous FTP? (Beware - allowed by default if you comment this out).</span></span><br><span class="line">anonymous_enable=YES  //是否允许匿名用户登录FTP服务器,默认是允许的.</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Uncomment this to allow local users to log in.</span></span><br><span class="line">local_enable=YES //是否允许本地用户登录FTP服务器,默认是允许</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Uncomment this to enable any form of FTP write command.</span></span><br><span class="line">write_enable=YES  //是否允许用户具有在FTP服务器文件中执行写的权限,默认是允许</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Default umask for local users is 077. You may wish to change this to 022,</span></span><br><span class="line"><span class="comment"># if your users expect that (022 is used by most other ftpd's)</span></span><br><span class="line">local_umask=022 //设置本地用户的文件生成掩码为022,默认是077</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Uncomment this to allow the anonymous FTP user to upload files. This only</span></span><br><span class="line"><span class="comment"># has an effect if the above global write enable is activated. Also, you will</span></span><br><span class="line"><span class="comment"># obviously need to create a directory writable by the FTP user.</span></span><br><span class="line"><span class="comment">#anon_upload_enable=YES</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Uncomment this if you want the anonymous FTP user to be able to create</span></span><br><span class="line"><span class="comment"># new directories.</span></span><br><span class="line"><span class="comment">#anon_mkdir_write_enable=YES  //是否允许匿名账户在FTP服务器中创建目录</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Activate directory messages - messages given to remote users when they</span></span><br><span class="line"><span class="comment"># go into a certain directory.</span></span><br><span class="line">dirmessage_enable=YES //激活目录信息,当远程用户更改目录时,将出现提示信息</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Activate logging of uploads/downloads.</span></span><br><span class="line">xferlog_enable=YES  //启用上传和下载日志功能</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Make sure PORT transfer connections originate from port 20 (ftp-data).</span></span><br><span class="line">connect_from_port_20=YES   //启用FTP数据端口的连接请求</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># If you want, you can arrange for uploaded anonymous files to be owned by</span></span><br><span class="line"><span class="comment"># a different user. Note! Using "root" for uploaded files is not</span></span><br><span class="line"><span class="comment"># recommended!</span></span><br><span class="line"><span class="comment">#chown_uploads=YES</span></span><br><span class="line"><span class="comment">#chown_username=whoever</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may override where the log file goes if you like. The default is shown</span></span><br><span class="line"><span class="comment"># below.</span></span><br><span class="line"><span class="comment">#xferlog_file=/var/log/vsftpd.log  //设置日志文件的文件名和存储路径,这是默认的</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># If you want, you can have your log file in standard ftpd xferlog format</span></span><br><span class="line">xferlog_std_format=YES//是否使用标准的ftpd xferlog日志文件格式</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may change the default value for timing out an idle session.</span></span><br><span class="line"><span class="comment">#idle_session_timeout=600  //设置空闲的用户会话中断时间,默认是10分钟</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may change the default value for timing out a data connection.</span></span><br><span class="line"><span class="comment">#data_connection_timeout=120//设置数据连接超时时间,默认是120秒.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># It is recommended that you define on your system a unique user which the</span></span><br><span class="line"><span class="comment"># ftp server can use as a totally isolated and unprivileged user.</span></span><br><span class="line"><span class="comment">#nopriv_user=ftpsecure</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Enable this and the server will recognise asynchronous ABOR requests. Not</span></span><br><span class="line"><span class="comment"># recommended for security (the code is non-trivial). Not enabling it,</span></span><br><span class="line"><span class="comment"># however, may confuse older FTP clients.</span></span><br><span class="line"><span class="comment">#async_abor_enable=YES</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># By default the server will pretend to allow ASCII mode but in fact ignore</span></span><br><span class="line"><span class="comment"># the request. Turn on the below options to have the server actually do ASCII</span></span><br><span class="line"><span class="comment"># mangling on files when in ASCII mode.</span></span><br><span class="line"><span class="comment"># Beware that turning on ascii_download_enable enables malicious remote parties</span></span><br><span class="line"><span class="comment"># to consume your I/O resources, by issuing the command "SIZE /big/file" in</span></span><br><span class="line"><span class="comment"># ASCII mode.</span></span><br><span class="line"><span class="comment"># These ASCII options are split into upload and download because you may wish</span></span><br><span class="line"><span class="comment"># to enable ASCII uploads (to prevent uploaded scripts etc. from breaking),</span></span><br><span class="line"><span class="comment"># without the DoS risk of SIZE and ASCII downloads. ASCII mangling should be</span></span><br><span class="line"><span class="comment"># on the client anyway..</span></span><br><span class="line"><span class="comment">#ascii_upload_enable=YES</span></span><br><span class="line"><span class="comment">#ascii_download_enable=YES //是否允许使用ASCII格式来上传和下载文件</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may fully customise the login banner string:</span></span><br><span class="line"><span class="comment">#ftpd_banner=Welcome to blah FTP service.//在FTP服务器中设置欢迎登录的信息.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may specify a file of disallowed anonymous e-mail addresses. Apparently</span></span><br><span class="line"><span class="comment"># useful for combatting certain DoS attacks.</span></span><br><span class="line"><span class="comment">#deny_email_enable=YES</span></span><br><span class="line"><span class="comment"># (default follows)</span></span><br><span class="line"><span class="comment">#banned_email_file=/etc/vsftpd.banned_emails</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may specify an explicit list of local users to chroot() to their home</span></span><br><span class="line"><span class="comment"># directory. If chroot_local_user is YES, then this list becomes a list of</span></span><br><span class="line"><span class="comment"># users to NOT chroot().</span></span><br><span class="line"><span class="comment">#chroot_list_enable=YES //如果希望用户登录后不能切换到自己目录以外的其它目录,需要设置该项,如果设置chroot_list_enable=YES,那么只允许/etc /vsftpd.chroot_list中列出的用户具有该功能.如果希望所有的本地用户都执行者chroot,可以增加一 行:chroot_local_user=YES</span></span><br><span class="line"><span class="comment"># (default follows)</span></span><br><span class="line"><span class="comment">#chroot_list_file=/etc/vsftpd.chroot_list</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may activate the "-R" option to the builtin ls. This is disabled by</span></span><br><span class="line"><span class="comment"># default to avoid remote users being able to cause excessive I/O on large</span></span><br><span class="line"><span class="comment"># sites. However, some broken FTP clients such as "ncftp" and "mirror" assume</span></span><br><span class="line"><span class="comment"># the presence of the "-R" option, so there is a strong case for enabling it.</span></span><br><span class="line"><span class="comment">#ls_recurse_enable=YES</span></span><br><span class="line">pam_service_name=vsftpd  //设置PAM认证服务的配置文件名称,该文件存放在/etc/pam.d/目录下.</span><br><span class="line">userlist_enable=YES //用户列表中的用户是否允许登录FTP服务器,默认是不允许</span><br><span class="line"><span class="comment">#enable for standalone mode</span></span><br><span class="line">listen=YES  //使vsftpd 处于独立启动模式</span><br><span class="line">tcp_wrappers=YES  //使用tcp_wrqppers作为主机访问控制方式</span><br></pre></td></tr></table></figure></p>
+<h2 id="添加ftp帐号和目录"><a href="#添加ftp帐号和目录" class="headerlink" title="添加ftp帐号和目录"></a>添加ftp帐号和目录</h2><p>装好之后，会在 /etc/group 中看到新增了一个ftp组 及用户列表/etc/passwd中看到 ftp用户，这里是软件自带的,上传目录默认为 /var/ftp。<br>下面就说手动添加一个ftp账户及指定默认的目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">useradd   -d /data/ftp -s /sbin/nologin ftpuser</span><br><span class="line">passwd   ftpuser</span><br><span class="line">chmod -R 777 /data/ftp</span><br><span class="line">chown -R  ftpuser /data/ftp</span><br></pre></td></tr></table></figure></p>
+<p>上面代码添加了一个用户ftpuser它的组为ftpuser并且指定它的上传目录为/data/ftp<br>更改配置文件后，需要重启服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service vsftpd restart</span><br></pre></td></tr></table></figure></p>
+<p>然后用帐号pwftp密码登录<br>测试下就可以登陆ftp了。目录是/data/ftp</p>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><p>如果你用ftpuser能登录，但无法上传文件时，可能是两种原因引起的<br>1.配置文件 vsftpd.conf<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">write_enable=YES  //是否允许用户具有在FTP服务器文件中执行写的权限,默认是允许</span><br></pre></td></tr></table></figure></p>
+<p>2.如果配置了1还是无法上传，比如今天我遇到了553错误，明明具有所有权却无法写入，可能就是你系统关闭了写入引起的，解决办法如下<br>关闭selinux<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setenforce 0  <span class="comment">#临时关闭</span></span><br></pre></td></tr></table></figure></p>
+<p>永久关闭就<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi  /et/selinux/config <span class="comment">#将其中的enforcing改为disabled</span></span><br></pre></td></tr></table></figure></p>
+<p>3.如果关闭了selinux后,倒致了ftp用户无法登录，请把ftpuser添加到root组。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -g root ftpuser</span><br></pre></td></tr></table></figure></p>
+<h2 id="后来"><a href="#后来" class="headerlink" title="后来"></a>后来</h2><p>配置上了FTP，但觉得知识需博闻强记，不能用时才查资料。归纳很重要!!!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/01/007-redhat-ftp/" data-id="cjkl8vju5000dlurw7i0vxl9i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RedHat/">RedHat</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/04/008-framework-apache/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Apache+Tomcat实现数据集群
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/29/006-java-jdkmyeclipse/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Ubuntu下安装JDK MyEclispe开发环境</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2018/">2018</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RedHat/">RedHat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vmware/">Vmware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人笔记/">个人笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2018/" style="font-size: 10px;">2018</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a> <a href="/tags/RedHat/" style="font-size: 20px;">RedHat</a> <a href="/tags/Vmware/" style="font-size: 10px;">Vmware</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/个人笔记/" style="font-size: 10px;">个人笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/08/103-new-start/">新的开始</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/18/000-hello-world/">我的HEXO博客开通了</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/102-java-ehcache/">ehcache简单使用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/101-linux-scale/">Red Hat磁盘扩容</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/100-zookeeper/">zookeeper安装及使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 TYZS<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

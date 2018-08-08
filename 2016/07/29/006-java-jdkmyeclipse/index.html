@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Ubuntu下安装JDK MyEclispe开发环境 | 道虽逊，不行不至。事虽小，不为不成。</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言下面为个人工作中的一些笔记，今天收拾磁盘看到贴出，仅供参考 安装JDKjdk下载地址把jdk安装到/opt/java，所以在Terminal窗口里执行下面的代码:12sudo mkdir /opt/javasudo tar zxvf jdk-7-linux-i586.tar.gz -C/opt/java">
+<meta name="keywords" content="JAVA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu下安装JDK MyEclispe开发环境">
+<meta property="og:url" content="http://yoursite.com/2016/07/29/006-java-jdkmyeclipse/index.html">
+<meta property="og:site_name" content="道虽逊，不行不至。事虽小，不为不成。">
+<meta property="og:description" content="前言下面为个人工作中的一些笔记，今天收拾磁盘看到贴出，仅供参考 安装JDKjdk下载地址把jdk安装到/opt/java，所以在Terminal窗口里执行下面的代码:12sudo mkdir /opt/javasudo tar zxvf jdk-7-linux-i586.tar.gz -C/opt/java">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2016-08-01T12:24:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu下安装JDK MyEclispe开发环境">
+<meta name="twitter:description" content="前言下面为个人工作中的一些笔记，今天收拾磁盘看到贴出，仅供参考 安装JDKjdk下载地址把jdk安装到/opt/java，所以在Terminal窗口里执行下面的代码:12sudo mkdir /opt/javasudo tar zxvf jdk-7-linux-i586.tar.gz -C/opt/java">
+  
+    <link rel="alternate" href="/atom.xml" title="道虽逊，不行不至。事虽小，不为不成。" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">道虽逊，不行不至。事虽小，不为不成。</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-006-java-jdkmyeclipse" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/29/006-java-jdkmyeclipse/" class="article-date">
+  <time datetime="2016-07-29T07:31:52.000Z" itemprop="datePublished">2016-07-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ubuntu下安装JDK MyEclispe开发环境
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>下面为个人工作中的一些笔记，今天收拾磁盘看到贴出，仅供参考</p>
+<h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><p>jdk<a href="http://download.oracle.com/otn-pub/java/jdk/7/jdk-7-linux-i586.tar.gz" target="_blank" rel="noopener">下载地址</a><br>把jdk安装到/opt/java，所以在Terminal窗口里执行下面的代码:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /opt/java</span><br><span class="line">sudo tar zxvf jdk-7-linux-i586.tar.gz -C/opt/java</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>1.用编辑器打开 /etc/environment<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/environment</span><br></pre></td></tr></table></figure></p>
+<p>2.修改文件配置JAVAHOME<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PATH=<span class="string">"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:usr/games:<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin"</span></span><br><span class="line">JAVA_HOME=/opt/java/jdk1.7.0</span><br><span class="line">JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line">CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br></pre></td></tr></table></figure></p>
+<p>3.打开bashrc文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>添加如下代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/opt/java/jdk1.7.0</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre </span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib </span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
+<p>4.重新加载bashrc<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>5.配置默认JDK版本：由于ubuntu中可能会有默认的JDK，如openjdk，所以，为了将我们安装的JDK设置为默认JDK版本，还要进行下面的配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --install /usr/bin/java java /opt/java/jdk1.7.0/bin/java 300</span><br><span class="line">sudo update-alternatives --install /usr/bin/javac javac /opt/java/jdk1.7.0/bin/javac 300</span><br><span class="line">sudo update-alternatives --install /usr/bin/jar jar /opt/java/jdk1.7.0/bin/jar 300</span><br><span class="line">sudo update-alternatives --install /usr/bin/javah javah /opt/java/jdk1.7.0/bin/javah 300</span><br><span class="line">sudo update-alternatives --install /usr/bin/javap javap /opt/java/jdk1.7.0/bin/javap 300</span><br><span class="line"></span><br><span class="line">sudo update-alternatives --config java</span><br><span class="line">sudo update-alternatives --config javac</span><br><span class="line">sudo update-alternatives --config jar</span><br></pre></td></tr></table></figure></p>
+<p>6.检测环境是否配好<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line"></span><br><span class="line">java version <span class="string">"1.7.0"</span></span><br><span class="line">Java(TM) SE Runtime Environment (build 1.7.0-b147)</span><br><span class="line">Java HotSpot(TM) Server VM (build 21.0-b17, mixed mode)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="安装myeclipse"><a href="#安装myeclipse" class="headerlink" title="安装myeclipse"></a>安装myeclipse</h2><p>下载 <a href="http://downloads.myeclipseide.com/downloads/products/eworkbench/indigo/installers/myeclipse-10.6-offline-installer-linux.run" target="_blank" rel="noopener">myeclipse-10.6-offline-installer-linux.run</a><br>重命名为 myeclipse.run;<br>1.打开终端，设置myeclipse.run为可读写然后运行安装向导<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod myeclipse.run</span><br><span class="line">sudo sh myeclipse.run</span><br></pre></td></tr></table></figure></p>
+<p>安装过程中，选择安装于/opt/MyEclipse/目录下，然后根据系统版本选择安装相应的MyEclipse<br>在终端进到/opt 文件夹下, 并加下 root 权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt</span><br><span class="line">sudo chown -R root:root MyEclipse</span><br><span class="line">sudo chmod -R +r MyEclipse</span><br><span class="line"><span class="built_in">cd</span> ./MyEclipse/MyEclipse\ 10/</span><br><span class="line">sudo chown -R root:root myeclipse</span><br><span class="line">sudo chmod -R +r myeclipse</span><br></pre></td></tr></table></figure></p>
+<p>2.建立 MyEclipse 的可执行文件(这个类似 windows 里面到 exe 的概念)(注意文件路径)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo gedit /usr/bin/MyEclipse</span><br></pre></td></tr></table></figure></p>
+<p>这时 gedit 会打开一个编辑器,在 gedit 编辑器里面加入以下代码并保存:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment">#export MOZILLA_FIVE_HOME=”/usr/lib/mozilla/”</span></span><br><span class="line"><span class="built_in">export</span> MYECLIPSE_HOME=”/opt/MyEclipse/MyEclipse 10/myeclipse″</span><br><span class="line"><span class="variable">$MYECLIPSE_HOME</span>/myeclipse $*</span><br><span class="line">设置文件权限</span><br><span class="line">$ chmod 755 /usr/bin/MyEclipse</span><br></pre></td></tr></table></figure></p>
+<p>在左上角的 Applications 菜单下加 MyEclipse 的启动菜单<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo gedit /usr/share/applications/MyEclipse.desktop</span><br></pre></td></tr></table></figure></p>
+<p>在编辑器里面插入以下代码并保存<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Encoding=UTF-8</span><br><span class="line">Name=MyEclipse 10</span><br><span class="line">Comment=IDE <span class="keyword">for</span> JavaEE</span><br><span class="line">Exec=/opt/MyEclipse/MyEclipse\ 10/myeclipse</span><br><span class="line">Icon=/opt/MyEclipse/MyEclipse\ 10/icon.xpm</span><br><span class="line">Terminal=<span class="literal">false</span></span><br><span class="line">Type=Application</span><br><span class="line">Categories=GNOME;Application;Development;</span><br><span class="line">StartupNotify=<span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>最后初始化启动一下 MyEclipse!<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /opt/MyEclipse/MyEclipse\ 10/myeclipse -clean</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装中遇到的问题"><a href="#安装中遇到的问题" class="headerlink" title="安装中遇到的问题"></a>安装中遇到的问题</h2><p>1.在”安装myeclipse-第三步“中遇到了如下问题：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@lihuoqingfly:~<span class="comment"># sh '/media/thinkcu/Backup/常用软件/Ubuntu/myeclipse.run'</span></span><br><span class="line">Starting installer - please <span class="built_in">wait</span>...</span><br><span class="line">- Preparing install engine</span><br><span class="line">- Extracted install engine</span><br><span class="line">/media/thinkcu/Backup/常用软件/Ubuntu/myeclipse.run: 1: /media/thinkcu/Backup/常用软件/Ubuntu/myeclipse.run: : Permission denied</span><br><span class="line">- Detected JVM architecture: bit</span><br><span class="line">/media/thinkcu/Backup/常用软件/Ubuntu/myeclipse.run: 190: [: =: argument expected</span><br><span class="line">- Launching install engine; waiting <span class="keyword">for</span> completion</span><br><span class="line">- Exited install engine</span><br></pre></td></tr></table></figure></p>
+<p>从错误提示可以看出，是JVM的问题。虽然我配置好了path、java_hme等环境，java -version测试jdk也没问题，但是就是装MyEclipse时出错误，好像是找不到自己装的JVM。原因是因为ubuntu自己提供了OPen java。解决办法：提前安装好JDK，并激活JDK，使之可用</p>
+<p>2.在Dash面板中启动刚才创建的MyEclipse 10，提示如下错误：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The configuration area at <span class="string">'/opt/MyEclipse/MyEclipse 10/configuration'</span> is not writable.  Please choose a writable location using the <span class="string">'-configuration'</span> <span class="built_in">command</span> line option.</span><br><span class="line">myeclipse启动时报错</span><br><span class="line">myeclipse启动时报错</span><br></pre></td></tr></table></figure></p>
+<p>解决办法(将MyEclipse和里面所有的文件及文件夹改为777权限，即可读写和执行)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod -R 777 /opt/MyEclipse</span><br></pre></td></tr></table></figure></p>
+<p>3.错误如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/eclipse/eclipse: Syntax error: <span class="string">"("</span> unexpected</span><br></pre></td></tr></table></figure></p>
+<p>这是因为32位系统安装了64位软件的错误</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/29/006-java-jdkmyeclipse/" data-id="cjkl8vju2000alurwh4w56rrz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/01/007-redhat-ftp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          RedHat下配置FTP工具
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/21/005-docker-shells/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Docker常用命令</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2018/">2018</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RedHat/">RedHat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vmware/">Vmware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人笔记/">个人笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2018/" style="font-size: 10px;">2018</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a> <a href="/tags/RedHat/" style="font-size: 20px;">RedHat</a> <a href="/tags/Vmware/" style="font-size: 10px;">Vmware</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/个人笔记/" style="font-size: 10px;">个人笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/08/103-new-start/">新的开始</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/18/000-hello-world/">我的HEXO博客开通了</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/102-java-ehcache/">ehcache简单使用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/101-linux-scale/">Red Hat磁盘扩容</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/100-zookeeper/">zookeeper安装及使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 TYZS<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

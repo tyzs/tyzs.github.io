@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Docker安装及运行 | 道虽逊，不行不至。事虽小，不为不成。</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言Docker是个好东西，看过Docker的一些介绍后更是被Dokcer的架构给折服，以前只会一些Docker的命令，不深入，而最近越发觉得自己知道的太少，这次趁着公司的项目，搭个虚拟机，加班加点简单粗暴提升一下自己。 Docker简介Docker是一个开源项目，为开发者和系统管理员提供了一个开放的平台，在任何地方通过打包和运行应用程序作为一个轻量级的容器。Docker 在软件容器内自动部署应用">
+<meta name="keywords" content="Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker安装及运行">
+<meta property="og:url" content="http://yoursite.com/2016/07/19/004-docker-introduction/index.html">
+<meta property="og:site_name" content="道虽逊，不行不至。事虽小，不为不成。">
+<meta property="og:description" content="前言Docker是个好东西，看过Docker的一些介绍后更是被Dokcer的架构给折服，以前只会一些Docker的命令，不深入，而最近越发觉得自己知道的太少，这次趁着公司的项目，搭个虚拟机，加班加点简单粗暴提升一下自己。 Docker简介Docker是一个开源项目，为开发者和系统管理员提供了一个开放的平台，在任何地方通过打包和运行应用程序作为一个轻量级的容器。Docker 在软件容器内自动部署应用">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/uploads/docker.png">
+<meta property="og:image" content="http://yoursite.com/uploads/docker_1.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/docker_2.jpg">
+<meta property="og:updated_time" content="2017-06-14T06:13:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker安装及运行">
+<meta name="twitter:description" content="前言Docker是个好东西，看过Docker的一些介绍后更是被Dokcer的架构给折服，以前只会一些Docker的命令，不深入，而最近越发觉得自己知道的太少，这次趁着公司的项目，搭个虚拟机，加班加点简单粗暴提升一下自己。 Docker简介Docker是一个开源项目，为开发者和系统管理员提供了一个开放的平台，在任何地方通过打包和运行应用程序作为一个轻量级的容器。Docker 在软件容器内自动部署应用">
+<meta name="twitter:image" content="http://yoursite.com/uploads/docker.png">
+  
+    <link rel="alternate" href="/atom.xml" title="道虽逊，不行不至。事虽小，不为不成。" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">道虽逊，不行不至。事虽小，不为不成。</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-004-docker-introduction" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/19/004-docker-introduction/" class="article-date">
+  <time datetime="2016-07-19T09:20:37.000Z" itemprop="datePublished">2016-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Docker安装及运行
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Docker是个好东西，看过Docker的一些介绍后更是被Dokcer的架构给折服，以前只会一些Docker的命令，不深入，而最近越发觉得自己知道的太少，这次趁着公司的项目，搭个虚拟机，加班加点简单粗暴提升一下自己。</p>
+<h2 id="Docker简介"><a href="#Docker简介" class="headerlink" title="Docker简介"></a>Docker简介</h2><p>Docker是一个开源项目，为开发者和系统管理员提供了一个开放的平台，在任何地方通过打包和运行应用程序作为一个轻量级的容器。Docker 在软件容器内自动部署应用程序。<br><a id="more"></a><br>Docker 最开始由 Solomon Hykes 作为 dotCloud 一个内部开发项目，一个企业级的 PaaS （platform as a service 服务平台），该软件现在由 Docker 社区和 Docker 公司维护，源代码托管在 Github 上, 基于go语言并遵从Apache2.0协议开源。</p>
+<p>Docker 使用客户端-服务器 (C/S) 架构模式，使用远程API来管理和创建Docker容器。Docker 容器通过 Docker 镜像来创建。容器与镜像的关系类似于面向对象编程中的对象与类</p>
+<p>来，一言不合就上图，下面图片简单明了<br><img src="/uploads/docker.png" alt="插入图片"></p>
+<h2 id="Docker-安装"><a href="#Docker-安装" class="headerlink" title="Docker 安装"></a>Docker 安装</h2><p>此处用的是Ubuntu14.04 LTS<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker.io</span><br></pre></td></tr></table></figure></p>
+<p>14.04之前的版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install linux-image-generic-lts-raring linux-headers-generic-lts-raring</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure></p>
+<p>如果安装成功在shell输入 docker  就会出现一堆 如图1<br><img src="/uploads/docker_1.jpg" alt="docker_1"></p>
+<p>具说老版本需要再启动docker 我没有遇到过，如果需启动请输入下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service docker start  </span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure></p>
+<h2 id="Docker-使用"><a href="#Docker-使用" class="headerlink" title="Docker 使用"></a>Docker 使用</h2><p>如果你装好了Docker 就有必要了解Docker的一些术语了</p>
+<h4 id="Docker-Images"><a href="#Docker-Images" class="headerlink" title="Docker Images"></a>Docker Images</h4><p>最基本的模板。image 通用容器使系统和应用易于安装，Docker image 是用来运行的容器，你可以找到许多 images <a href="https://hub.docker.com/" target="_blank" rel="noopener">在这里</a></p>
+<h4 id="Docker-Container"><a href="#Docker-Container" class="headerlink" title="Docker Container"></a>Docker Container</h4><p>是一个 Image，在运行的 Docker image 上读取和写入。Docker 是一个联合的文件系统作为容器后台，容器的任何变化，都将被保存在一个基本 image 新的层上。我们安装应用程序的层就是容器。每个在主机机上运行的容器都是独立的，因此，提供了一个安全的应用平台。</p>
+<h4 id="Docker-Registry"><a href="#Docker-Registry" class="headerlink" title="Docker Registry"></a>Docker Registry</h4><p>是为 Docker images 提供的库。它提供了公共和私有库。公共 Docker 库被叫做 Docker Hub。这里我们能够上传 push 和 pull 我们自己的 images</p>
+<h4 id="Docker镜像下载"><a href="#Docker镜像下载" class="headerlink" title="Docker镜像下载"></a>Docker镜像下载</h4><p>既然Docker装好了，我们就要去库中下载一个镜像文件了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker search  ubuntu  <span class="comment">#搜索镜像</span></span><br><span class="line">docker pull ubuntu:16.04  <span class="comment">#下载镜像文件 如下图2</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/uploads/docker_2.jpg" alt="docker_2"><br>也可以从指定的仓库服务器下载<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull dl.dockerpool.com:5000/ubuntu:16.04</span><br></pre></td></tr></table></figure></p>
+<h4 id="Docker镜像运行与使用"><a href="#Docker镜像运行与使用" class="headerlink" title="Docker镜像运行与使用"></a>Docker镜像运行与使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker images <span class="comment">#查看镜像文件列表</span></span><br><span class="line">docker ps  <span class="comment">#查看运动中的容器列表</span></span><br><span class="line">docker ps  -a <span class="comment">#查看所有的容器列表</span></span><br><span class="line">docker start xxx <span class="comment">#启动一个容器</span></span><br><span class="line">docker stop xxx <span class="comment">#关闭一个容器</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@hwl-pc:/home/hwl<span class="comment"># docker  images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE</span><br><span class="line">ubuntu              16.04               ac8b2a2b477b        16 hours ago        125.2 MB</span><br><span class="line">ubuntu              12.04               1a11d2cd5218        16 hours ago        148 MB</span><br></pre></td></tr></table></figure>
+<p>REPOSITORY 为镜像库<br>TAG 是该镜像的标签<br>IMAGE ID 镜像的唯一标识  一个标识 可以对应多个标签<br>CREATED 创建时间<br>VIRTUAL SIZE 镜像大小</p>
+<p>要创建容器，可以使用docker create 或 docker run<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker create ubuntu:12.04</span><br></pre></td></tr></table></figure></p>
+<p>docker create 命令会创建一个新的容器，但不会启动它，并且Docker会为该容器起一个名称。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i  ubuntu:16.04  /bin/bash <span class="comment">#根据下载的镜像创建一个容器</span></span><br></pre></td></tr></table></figure>
+<p>此命令将创建并运行一个基于 Ubuntu16.04 镜像的容器，容器内并运行一个命令/bin/bash，您将在容器内自动运行命令，并且Docker会为该容器起一个名称<br>当你输入 Exit 命令退出容器时，容器也是停止运行，如果你想容器在后台运行需要在命令后面添加 -d 参数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i -d  ubuntu:16.04  /bin/bash <span class="comment">#根据下载的镜像创建一个容器并运行</span></span><br></pre></td></tr></table></figure>
+<p>Docker会为该容器起一个名称，当你输入 Exit 命令退出容器时，容器也是运行的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d --name tyzs -v /root/workers:/opt/soft ubuntu:16.04</span><br></pre></td></tr></table></figure>
+<p>Docker该容器起一个你指定的名称tyzs,并且运行该容器，并且你本地的目录/root/workers 会映射到容器的/opt/soft下，如果容器不存在指定的目录则会创建，这样的好处是方便你在容器中安装订制一些软件。</p>
+<h4 id="Docker-镜像提交更新"><a href="#Docker-镜像提交更新" class="headerlink" title="Docker 镜像提交更新"></a>Docker 镜像提交更新</h4><p>当你在一个容器中做好自己的一些配置后，怎么把你做的更改后的容器变成你的镜像呢，这时候就要用到下面命令<br>docker commit -m  ‘desc’  -a ‘user’  ID   ubuntu:16.06<br>-m 后面是描述  -a后面是更改用户 ID 为容器ID 再后面是你更改仓库:镜像TAG<br>如下代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@hwl-pc:/home/hwl<span class="comment"># docker  commit  -m   'tyzs' -a 'tyzs' 67b499dbf995  ubuntu:12.04</span></span><br><span class="line">32e52ed4f3b7526af84dfd5037a47bf1239f72be7e93150d947e92169904a153</span><br><span class="line"><span class="comment">#再看可以发现 镜像已发生变动</span></span><br><span class="line">root@hwl-pc:/home/hwl<span class="comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED              VIRTUAL SIZE</span><br><span class="line">ubuntu              12.04               32e52ed4f3b7        About a minute ago   328 MB</span><br></pre></td></tr></table></figure></p>
+<p>当然也可以我们也可以自已创建一个新的镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@hwl-pc:/home/hwl<span class="comment"># docker  commit  -m   'tyzs' -a 'tyzs' 67b499dbf995  ubuntu:tyzsTest</span></span><br><span class="line">c61860136e2cf2ff9ccf4721e63db0ce2197f46299536fd1e81fa579fb7bad04</span><br><span class="line">root@hwl-pc:/home/hwl<span class="comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE</span><br><span class="line">ubuntu              tyzsTest            c61860136e2c        6 seconds ago       328 MB</span><br><span class="line">ubuntu              12.04               32e52ed4f3b7        12 minutes ago      328 MB</span><br></pre></td></tr></table></figure></p>
+<h4 id="自制Docker镜像下载与恢复"><a href="#自制Docker镜像下载与恢复" class="headerlink" title="自制Docker镜像下载与恢复"></a>自制Docker镜像下载与恢复</h4><p>我们在ubuntu12.04上创建了一个容器，然后修改了该容器，安装了一些我们所需的插件，然后又创建了一个新的镜像，那么我们怎么在本地把创建的镜像给迁移到另一台需要部署的机器上呢，就需要下面的命令了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@hwl-pc:/home/hwl<span class="comment"># docker save  -o  tyzs.tar  ubuntu:tyzsTest  #tyzs.tar 名字可随意 </span></span><br><span class="line">root@hwl-pc:/home/hwl<span class="comment"># ls    </span></span><br><span class="line">a.txt             newother.tar  soft   tyzs.tar         公共的  视频  文档  音乐</span><br></pre></td></tr></table></figure></p>
+<p>镜像恢复<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@hwl-pc:/home/hwl<span class="comment"># docker  load  -i  tyzs.tar  #在另一台装有docker的设备上load该文件可以直接恢复</span></span><br><span class="line">root@hwl-pc:/home/hwl<span class="comment"># docker  images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE</span><br><span class="line">ubuntu              tyzsTest            c61860136e2c        10 minutes ago      328 MB</span><br></pre></td></tr></table></figure></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Docker是个不错的容器，如果你用过GIT，会发现它们的命令还有点神似有木有。具说Docker是以后的趋势，你如果喜欢可试着玩玩，要深入更欢迎一起交流。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/19/004-docker-introduction/" data-id="cjkl8vjtw0006lurwhey47czn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/21/005-docker-shells/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Docker常用命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/19/003-linux-vmware/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Linux安装Vmware-tools错误解决</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2018/">2018</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RedHat/">RedHat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vmware/">Vmware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人笔记/">个人笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2018/" style="font-size: 10px;">2018</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a> <a href="/tags/RedHat/" style="font-size: 20px;">RedHat</a> <a href="/tags/Vmware/" style="font-size: 10px;">Vmware</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/个人笔记/" style="font-size: 10px;">个人笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/08/103-new-start/">新的开始</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/18/000-hello-world/">我的HEXO博客开通了</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/102-java-ehcache/">ehcache简单使用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/101-linux-scale/">Red Hat磁盘扩容</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/100-zookeeper/">zookeeper安装及使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 TYZS<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

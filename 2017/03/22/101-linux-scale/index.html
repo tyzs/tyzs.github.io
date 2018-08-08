@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Red Hat磁盘扩容 | 道虽逊，不行不至。事虽小，不为不成。</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="序最近服务器空间不足，导致数据无法及时同步备份，因此申请扩容后系统部过来给了个无需重启的扩容方案，具体实施步骤见下。 1.linux 在不重启的情况下搜索新加磁盘123echo &quot;- - -&quot; &amp;gt;/sys/class/scsi_host/host0/scanecho &quot;- - -&quot; &amp;gt;/sys/class/scsi_host/host1/scanecho &quot;- - -&quot; &amp;gt;/sy">
+<meta name="keywords" content="RedHat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Red Hat磁盘扩容">
+<meta property="og:url" content="http://yoursite.com/2017/03/22/101-linux-scale/index.html">
+<meta property="og:site_name" content="道虽逊，不行不至。事虽小，不为不成。">
+<meta property="og:description" content="序最近服务器空间不足，导致数据无法及时同步备份，因此申请扩容后系统部过来给了个无需重启的扩容方案，具体实施步骤见下。 1.linux 在不重启的情况下搜索新加磁盘123echo &quot;- - -&quot; &amp;gt;/sys/class/scsi_host/host0/scanecho &quot;- - -&quot; &amp;gt;/sys/class/scsi_host/host1/scanecho &quot;- - -&quot; &amp;gt;/sy">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-06-29T06:15:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Red Hat磁盘扩容">
+<meta name="twitter:description" content="序最近服务器空间不足，导致数据无法及时同步备份，因此申请扩容后系统部过来给了个无需重启的扩容方案，具体实施步骤见下。 1.linux 在不重启的情况下搜索新加磁盘123echo &quot;- - -&quot; &amp;gt;/sys/class/scsi_host/host0/scanecho &quot;- - -&quot; &amp;gt;/sys/class/scsi_host/host1/scanecho &quot;- - -&quot; &amp;gt;/sy">
+  
+    <link rel="alternate" href="/atom.xml" title="道虽逊，不行不至。事虽小，不为不成。" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">道虽逊，不行不至。事虽小，不为不成。</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-101-linux-scale" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/101-linux-scale/" class="article-date">
+  <time datetime="2017-03-22T07:33:05.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Red Hat磁盘扩容
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>最近服务器空间不足，导致数据无法及时同步备份，因此申请扩容后系统部过来给了个无需重启的扩容方案，具体实施步骤见下。</p>
+<h3 id="1-linux-在不重启的情况下搜索新加磁盘"><a href="#1-linux-在不重启的情况下搜索新加磁盘" class="headerlink" title="1.linux 在不重启的情况下搜索新加磁盘"></a>1.linux 在不重启的情况下搜索新加磁盘</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"- - -"</span> &gt;/sys/class/scsi_host/host0/scan</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"- - -"</span> &gt;/sys/class/scsi_host/host1/scan</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"- - -"</span> &gt;/sys/class/scsi_host/host2/scan</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="2-初始化分区sdb为物理卷pv"><a href="#2-初始化分区sdb为物理卷pv" class="headerlink" title="2.初始化分区sdb为物理卷pv"></a>2.初始化分区sdb为物理卷pv</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CHJNOPSWEB01 ~]<span class="comment"># pvcreate /dev/sdb </span></span><br><span class="line">  Physical volume <span class="string">"/dev/sdb"</span> successfully created</span><br></pre></td></tr></table></figure>
+<h3 id="3-显示硬盘的物理卷列表"><a href="#3-显示硬盘的物理卷列表" class="headerlink" title="3.显示硬盘的物理卷列表"></a>3.显示硬盘的物理卷列表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@CHJNOPSWEB01 ~]<span class="comment"># pvs</span></span><br><span class="line">PV         VG     Fmt  Attr PSize   PFree  </span><br><span class="line"> /dev/sda2  rootvg lvm2 a--   79.80g  23.82g</span><br><span class="line"> /dev/sdb          lvm2 a--  200.00g 200.00g</span><br></pre></td></tr></table></figure>
+<h3 id="4-向rootvg组中添加物理卷"><a href="#4-向rootvg组中添加物理卷" class="headerlink" title="4.向rootvg组中添加物理卷"></a>4.向rootvg组中添加物理卷</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```root@CHJNOPSWEB01 ~]<span class="comment"># vgextend rootvg /dev/sdb</span></span><br><span class="line">  Volume group <span class="string">"rootvg"</span> successfully extended</span><br><span class="line"></span><br><span class="line"><span class="comment">### 5.显示有关卷组的信息 </span></span><br><span class="line">```bash</span><br><span class="line">[root@CHJNOPSWEB01 ~]<span class="comment"># vgs</span></span><br><span class="line">  VG     <span class="comment">#PV #LV #SN Attr   VSize   VFree  </span></span><br><span class="line">  rootvg   2  13   0 wz--n- 279.80g 223.82g</span><br></pre></td></tr></table></figure>
+<h3 id="6-lvs-查看各卷空间"><a href="#6-lvs-查看各卷空间" class="headerlink" title="6.lvs 查看各卷空间"></a>6.lvs 查看各卷空间</h3><h3 id="7-扩展逻辑卷空间"><a href="#7-扩展逻辑卷空间" class="headerlink" title="7.扩展逻辑卷空间"></a>7.扩展逻辑卷空间</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@CHJNOPSWEB01 ~]<span class="comment"># lvextend -L +80G /dev/mapper/rootvg-lvopt </span></span><br><span class="line">  Extending logical volume lvopt to 85.00 GiB</span><br><span class="line">  Logical volume lvopt successfully resized</span><br></pre></td></tr></table></figure>
+<h3 id="8-resize2fs程序会重新定义文件系统-使扩展生效"><a href="#8-resize2fs程序会重新定义文件系统-使扩展生效" class="headerlink" title="8.resize2fs程序会重新定义文件系统,使扩展生效"></a>8.resize2fs程序会重新定义文件系统,使扩展生效</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@CHJNOPSWEB01 ~]<span class="comment"># resize2fs -p /dev/mapper/rootvg-lvopt </span></span><br><span class="line">resize2fs 1.41.12 (17-May-2010)</span><br><span class="line">Filesystem at /dev/mapper/rootvg-lvopt is mounted on /opt; on-line resizing required</span><br><span class="line">old desc_blocks = 1, new_desc_blocks = 6</span><br><span class="line">Performing an on-line resize of /dev/mapper/rootvg-lvopt to 22282240 (4k) blocks.</span><br><span class="line">The filesystem on /dev/mapper/rootvg-lvopt is now 22282240 blocks long.</span><br><span class="line"></span><br><span class="line">[root@CHJNOPSWEB01 ~]<span class="comment"># lvextend -L +100G /dev/mapper/rootvg-lvvar </span></span><br><span class="line">  Extending logical volume lvvar to 110.00 GiB</span><br><span class="line">  Logical volume lvvar successfully resized</span><br></pre></td></tr></table></figure>
+<h2 id="尾"><a href="#尾" class="headerlink" title="尾"></a>尾</h2><p>具体操作步骤见上，下面为对不同目录的扩容及最终展示结果。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@CHJNOPSWEB01 ~]<span class="comment"># resize2fs -p /dev/mapper/rootvg-lvvar </span></span><br><span class="line">resize2fs 1.41.12 (17-May-2010)</span><br><span class="line">Filesystem at /dev/mapper/rootvg-lvvar is mounted on /var; on-line resizing required</span><br><span class="line">old desc_blocks = 1, new_desc_blocks = 7</span><br><span class="line">Performing an on-line resize of /dev/mapper/rootvg-lvvar to 28835840 (4k) blocks.</span><br><span class="line">The filesystem on /dev/mapper/rootvg-lvvar is now 28835840 blocks long.</span><br><span class="line"></span><br><span class="line">[root@CHJNOPSWEB01 ~]<span class="comment"># df -h</span></span><br><span class="line">Filesystem                    Size  Used Avail Use% Mounted on</span><br><span class="line">/dev/mapper/rootvg-lv0        5.0G  1.6G  3.1G  35% /</span><br><span class="line">tmpfs                         3.9G   72K  3.9G   1% /dev/shm</span><br><span class="line">/dev/sda1                     194M   35M  150M  19% /boot</span><br><span class="line">/dev/mapper/rootvg-lvhome     5.0G  158M  4.6G   4% /home</span><br><span class="line">/dev/mapper/rootvg-lvchkappa 1008M   34M  924M   4% /home/chkappa</span><br><span class="line">/dev/mapper/rootvg-lvchkappb 1008M   34M  924M   4% /home/chkappb</span><br><span class="line">/dev/mapper/rootvg-lvchkdev   485M   11M  449M   3% /home/chkdev</span><br><span class="line">/dev/mapper/rootvg-lvchksec   485M   11M  449M   3% /home/chksec</span><br><span class="line">/dev/mapper/rootvg-lvchksys  1008M   34M  924M   4% /home/chksys</span><br><span class="line">/dev/mapper/rootvg-lvopt       84G  146M   80G   1% /opt</span><br><span class="line">/dev/mapper/rootvg-lvitm6     6.0G  141M  5.5G   3% /opt/itm6</span><br><span class="line">/dev/mapper/rootvg-lvtmp      3.0G   69M  2.8G   3% /tmp</span><br><span class="line">/dev/mapper/rootvg-lvusr      9.9G  3.4G  6.0G  36% /usr</span><br><span class="line">/dev/mapper/rootvg-lvvar      109G  4.2G   99G   5% /var</span><br></pre></td></tr></table></figure></p>
+<p>抟摇直上 2017-03-22</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/22/101-linux-scale/" data-id="cjkl8vjuc000ilurw1g6pw0ha" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RedHat/">RedHat</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/24/102-java-ehcache/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ehcache简单使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/22/100-zookeeper/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">zookeeper安装及使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2018/">2018</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RedHat/">RedHat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vmware/">Vmware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人笔记/">个人笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2018/" style="font-size: 10px;">2018</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a> <a href="/tags/RedHat/" style="font-size: 20px;">RedHat</a> <a href="/tags/Vmware/" style="font-size: 10px;">Vmware</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/个人笔记/" style="font-size: 10px;">个人笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/08/103-new-start/">新的开始</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/18/000-hello-world/">我的HEXO博客开通了</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/102-java-ehcache/">ehcache简单使用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/101-linux-scale/">Red Hat磁盘扩容</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/100-zookeeper/">zookeeper安装及使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 TYZS<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

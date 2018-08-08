@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>道虽逊，不行不至。事虽小，不为不成。</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="道虽逊，不行不至。事虽小，不为不成。">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="道虽逊，不行不至。事虽小，不为不成。">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="道虽逊，不行不至。事虽小，不为不成。">
+  
+    <link rel="alternate" href="/atom.xml" title="道虽逊，不行不至。事虽小，不为不成。" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">道虽逊，不行不至。事虽小，不为不成。</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-003-linux-vmware" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/19/003-linux-vmware/" class="article-date">
+  <time datetime="2016-07-19T07:45:54.000Z" itemprop="datePublished">2016-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/19/003-linux-vmware/">Linux安装Vmware-tools错误解决</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="The-path-“”-is-not-a-valid-path-to-the-xxxx-generic-kernel-headers"><a href="#The-path-“”-is-not-a-valid-path-to-the-xxxx-generic-kernel-headers" class="headerlink" title="The path “” is not a valid path to the xxxx-generic kernel headers."></a>The path “” is not a valid path to the xxxx-generic kernel headers.</h3><p>解决办法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install linux-headers-xxxx-generic <span class="comment">#xxxx为你的报错的版本号</span></span><br><span class="line"><span class="comment">#或者自动适配</span></span><br><span class="line">sudo apt-get install linux-headers-`uname -r`</span><br></pre></td></tr></table></figure></p>
+<p>装上重新运行安装文件，如果还不行，就要手动搞一下<br>去目录  /usr/src/linux-headers-xxxx/include/uapi/linux/dvb/<br>把version.h 复制到/usr/src/linux-headers-xxxx/include/linux下，重新vmware-install.pl 执行安装</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/19/003-linux-vmware/" data-id="cjkl8vjtv0005lurwucxqgaca" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vmware/">Vmware</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-002-note-20160714" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/14/002-note-20160714/" class="article-date">
+  <time datetime="2016-07-14T12:58:31.000Z" itemprop="datePublished">2016-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/14/002-note-20160714/">过的好快</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="自己"><a href="#自己" class="headerlink" title="自己"></a>自己</h2><p>最近两天迷上了Hexo博客框架，一下班就去网上看各种搭建教程，然写的都不深入，发现国内的技术都是浅尝辄止，告诉了你入门，然后放任自流，说，剩下的你去其它地方看吧。感觉这是很不负责的行为。但你又不能说别人不好，别人爱写多少是他的自由，关你鸟事。也就是这样的一种风气才使的开发人员的个人名气都没那么高吧。</p>
+<p>如果你看一个人的博客从第一篇读到最后一篇，亲自实践后成了牛人，那你看的这个人估计就会被推崇为神了。但中国人历来没有信仰，所以神又和HIFI耳机一样被称为玄学，听的懂不懂你自己也不知道，只是人云亦云从别人口中说好罢了。<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/07/14/002-note-20160714/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/14/002-note-20160714/" data-id="cjkl8vjtt0004lurwn71nz7el" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人笔记/">个人笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-001-hexo-extend" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/13/001-hexo-extend/" class="article-date">
+  <time datetime="2016-07-13T09:58:36.000Z" itemprop="datePublished">2016-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/13/001-hexo-extend/">Hexo更换主题及集成多说插件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="不要太严肃"><a href="#不要太严肃" class="headerlink" title="不要太严肃"></a>不要太严肃</h2><p>上篇<a href="https://github.com" target="_blank" rel="noopener">GitHub</a>+<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>搭建个人博客成功之后，如果你觉得Hexo给的界面不太友好，想换个主题。况且自己写的文章没有评论肯定落寞，希望别人去灌个水，这时候就要用Hexo扩展下新功能了，这里主要讲下主题更换及多说插件的安装。希望能给你一些参考，费话不多说，下面上代码。<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/07/13/001-hexo-extend/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/13/001-hexo-extend/" data-id="cjkl8vjtp0002lurw9u1n0g02" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-000-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/11/000-hexo/" class="article-date">
+  <time datetime="2016-07-11T12:56:43.000Z" itemprop="datePublished">2016-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/11/000-hexo/">GitHub+Hexo搭建个人博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>欢迎光临我的博客网站!</p>
+<p>偶然听说可以用<a href="https://github.com" target="_blank" rel="noopener">GitHub</a>+<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>搭建个人博客，简直万分欣喜。博客是个好东西，即可以记录自己的日常心得，也可以归纳技术上的收获,闲来无事码上一篇，何乐而不为呢。<br>因此开篇我想说下GitHub+Hexo的搭建，供有相同爱好的朋友去开辟自己的空间。<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/07/11/000-hexo/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/11/000-hexo/" data-id="cjkl8vjtl0001lurwo796velq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2018/">2018</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RedHat/">RedHat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vmware/">Vmware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人笔记/">个人笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2018/" style="font-size: 10px;">2018</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a> <a href="/tags/RedHat/" style="font-size: 20px;">RedHat</a> <a href="/tags/Vmware/" style="font-size: 10px;">Vmware</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/个人笔记/" style="font-size: 10px;">个人笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/08/103-new-start/">新的开始</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/18/000-hello-world/">我的HEXO博客开通了</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/102-java-ehcache/">ehcache简单使用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/101-linux-scale/">Red Hat磁盘扩容</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/100-zookeeper/">zookeeper安装及使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 TYZS<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

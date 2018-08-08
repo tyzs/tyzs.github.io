@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Docker常用命令 | 道虽逊，不行不至。事虽小，不为不成。</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="小别上篇文章说了Docker,并亲自做了Docker的安装，以及实现了一个简单的场景，这里主要记录一些自己学习中的命令，也算是笔记吧。最近做梦都是Docker，我这是疯了嘛….. Dockerfile创建镜像前面用下载的镜像创建了一个容器后，在里面装了几个软件，而后又重新提交生成了新的镜像，虽然不难，但做起来要几步走，如果你懒，完全可以试试Dockerfile">
+<meta name="keywords" content="Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker常用命令">
+<meta property="og:url" content="http://yoursite.com/2016/07/21/005-docker-shells/index.html">
+<meta property="og:site_name" content="道虽逊，不行不至。事虽小，不为不成。">
+<meta property="og:description" content="小别上篇文章说了Docker,并亲自做了Docker的安装，以及实现了一个简单的场景，这里主要记录一些自己学习中的命令，也算是笔记吧。最近做梦都是Docker，我这是疯了嘛….. Dockerfile创建镜像前面用下载的镜像创建了一个容器后，在里面装了几个软件，而后又重新提交生成了新的镜像，虽然不难，但做起来要几步走，如果你懒，完全可以试试Dockerfile">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2016-07-21T14:50:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker常用命令">
+<meta name="twitter:description" content="小别上篇文章说了Docker,并亲自做了Docker的安装，以及实现了一个简单的场景，这里主要记录一些自己学习中的命令，也算是笔记吧。最近做梦都是Docker，我这是疯了嘛….. Dockerfile创建镜像前面用下载的镜像创建了一个容器后，在里面装了几个软件，而后又重新提交生成了新的镜像，虽然不难，但做起来要几步走，如果你懒，完全可以试试Dockerfile">
+  
+    <link rel="alternate" href="/atom.xml" title="道虽逊，不行不至。事虽小，不为不成。" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">道虽逊，不行不至。事虽小，不为不成。</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-005-docker-shells" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/21/005-docker-shells/" class="article-date">
+  <time datetime="2016-07-21T13:57:21.000Z" itemprop="datePublished">2016-07-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Docker常用命令
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="小别"><a href="#小别" class="headerlink" title="小别"></a>小别</h2><p><a href="http://www.hwlblog.com/2016/07/19/004-docker-introduction/" target="_blank" rel="noopener">上篇文章</a>说了Docker,并亲自做了Docker的安装，以及实现了一个简单的场景，这里主要记录一些自己学习中的命令，也算是笔记吧。最近做梦都是Docker，我这是疯了嘛…..</p>
+<h2 id="Dockerfile创建镜像"><a href="#Dockerfile创建镜像" class="headerlink" title="Dockerfile创建镜像"></a>Dockerfile创建镜像</h2><p><a href="http://www.hwlblog.com/2016/07/19/004-docker-introduction/" target="_blank" rel="noopener">前面</a>用下载的镜像创建了一个容器后，在里面装了几个软件，而后又重新提交生成了新的镜像，虽然不难，但做起来要几步走，如果你懒，完全可以试试Dockerfile<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">touch   Dockerfile </span><br><span class="line"><span class="comment">#上面建一个文件 并在里面输入下面的代码，就是一个装自己软件的执行步骤</span></span><br><span class="line">FROM ubuntu:12.04 <span class="comment">#依赖镜像</span></span><br><span class="line">MAINTAINER Docker Newbee &lt;hwl@sina.com&gt;  <span class="comment">#创建人 随便</span></span><br><span class="line">RUN apt-get  update <span class="comment">#更新了一些软件</span></span><br><span class="line">EXPOSE  21 <span class="comment">#开了一个端口</span></span><br></pre></td></tr></table></figure></p>
+<p>下面运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">hwl@hwl-pc:~/sinatra$ sudo docker build -t=<span class="string">"ubuntu:v2"</span> . </span><br><span class="line"><span class="comment">#上行意:在ubuntu:12.04 镜像的基础上执行Dockerfile代码生成ubuntu:v2镜像 . 为当前目录 </span></span><br><span class="line"><span class="comment">#下面为执行的结果</span></span><br><span class="line">Sending build context to Docker daemon 3.072 kB</span><br><span class="line">Sending build context to Docker daemon </span><br><span class="line">Step 0 : FROM ubuntu:12.04</span><br><span class="line"> ---&gt; 32e52ed4f3b7</span><br><span class="line">Step 1 : MAINTAINER Docker Newbee &lt;hwl@sina.com&gt;</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 64a3d4168d49</span><br><span class="line"> ---&gt; 45d08763af44</span><br><span class="line">Removing intermediate container 64a3d4168d49</span><br><span class="line">Step 2 : RUN apt-get  update</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 0a624db9792c</span><br></pre></td></tr></table></figure></p>
+<p>运行结束后，会发现，新加了一个ubuntu 并且TAG 为v2的镜像</p>
+<h2 id="docker-tag"><a href="#docker-tag" class="headerlink" title="docker tag"></a>docker tag</h2><p> 该命令说是改Docker镜像的TAG，我试了下，发现会重新复制一个docker，如果跟一个参数默认会生成REPOSITORY=xxx，TAG=latest的镜像 如果两个会生成REPOSITORY=xxx TAG=xxx 的新镜像，看下面代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">root@hwl-pc:/home/hwl/sinatra<span class="comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE</span><br><span class="line"><span class="built_in">test</span>                latest              20f801eedf4e        23 minutes ago      328 MB</span><br><span class="line">ubuntu              tyzsTest            c61860136e2c        6 hours ago         328 MB</span><br><span class="line">ubuntu              12.04               32e52ed4f3b7        7 hours ago         328 MB</span><br><span class="line"></span><br><span class="line">root@hwl-pc:/home/hwl/sinatra<span class="comment"># docker tag c61860136e2c   aa:test  #注意 新镜像IMAGE ID 相同</span></span><br><span class="line">root@hwl-pc:/home/hwl/sinatra<span class="comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE</span><br><span class="line"><span class="built_in">test</span>                latest              20f801eedf4e        26 minutes ago      328 MB</span><br><span class="line">ubuntu              tyzsTest            c61860136e2c        7 hours ago         328 MB</span><br><span class="line">aa                  <span class="built_in">test</span>                c61860136e2c        7 hours ago         328 MB</span><br></pre></td></tr></table></figure></p>
+<h2 id="容器-导出-导入-删除"><a href="#容器-导出-导入-删除" class="headerlink" title="容器 导出  导入 删除"></a>容器 导出  导入 删除</h2><p>导出一个容器到本地<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@hwl-pc:/<span class="comment"># docker export 67b499dbf995 &gt; /home/hwl/soft/tyzs.tar#容器ID 导出目录</span></span><br><span class="line">root@hwl-pc:/<span class="comment"># cd /home/hwl/soft/</span></span><br><span class="line">root@hwl-pc:/home/hwl/soft<span class="comment"># ls</span></span><br><span class="line">dpkg_1.15.5.6ubuntu4.10.tar.bz2        tyzs.tar</span><br></pre></td></tr></table></figure></p>
+<p>从容器导出文件中 再导入到DOCKER中成为一个镜像 ，注意容器导入后变成了镜像，因为镜像可以做N个容器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@hwl-pc:/home/hwl/soft<span class="comment"># cat tyzs.tar | sudo  docker import - ubuntu:tyzs2</span></span><br><span class="line">aceca700022298715895152c41c72c5f1b3b0695e45188836bea0aaa3291b857                </span><br><span class="line">root@hwl-pc:/home/hwl/soft<span class="comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE</span><br><span class="line">ubuntu              tyzs2               aceca7000222        38 seconds ago      272.3 MB</span><br><span class="line">ubuntu</span><br></pre></td></tr></table></figure></p>
+<p>强制删除运行中的容器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@hwl-pc:/home/hwl/soft<span class="comment"># docker rm  tyzs #该种只适用于不运行的容器</span></span><br><span class="line">Error response from daemon: Conflict, You cannot remove a running container. Stop the container before attempting removal or use -f</span><br><span class="line">FATA[0000] Error: failed to remove one or more containers </span><br><span class="line">root@hwl-pc:/home/hwl/soft<span class="comment"># docker rm  -f tyzs  #强制删除运行中的容器</span></span><br><span class="line">tyzs</span><br></pre></td></tr></table></figure></p>
+<h2 id="其它命令"><a href="#其它命令" class="headerlink" title="其它命令"></a>其它命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker push ubuntu:tyzsTest  <span class="comment">#把本地的镜像推到仓库中共享</span></span><br><span class="line">docker save -o   xxx.tar  ubuntu:tyzsTest <span class="comment">#导出镜像</span></span><br><span class="line">docker load --input xxx.tar  <span class="comment">#载入镜像</span></span><br><span class="line">dokcer rmi xx:xx    <span class="comment">#移除镜像</span></span><br><span class="line">docker rm xx       <span class="comment">#移除容器</span></span><br><span class="line">docker -s N search xxx <span class="comment">#查找带星级的镜像 普通查找用 docker search xxx</span></span><br></pre></td></tr></table></figure>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>今天公司又买了一年的VPN，大谷歌可以用啦，这点值的赞。离开了谷歌的程序员，学东西真是捉襟见肘。来首歌，抒发下心情。</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="520" height="86" src="http://music.163.com/outchain/player?type=2&id=155883&auto=1&height=66"></iframe>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/21/005-docker-shells/" data-id="cjkl8vju00009lurwgeq0y773" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/29/006-java-jdkmyeclipse/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Ubuntu下安装JDK MyEclispe开发环境
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/19/004-docker-introduction/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Docker安装及运行</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2018/">2018</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RedHat/">RedHat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vmware/">Vmware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人笔记/">个人笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2018/" style="font-size: 10px;">2018</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a> <a href="/tags/RedHat/" style="font-size: 20px;">RedHat</a> <a href="/tags/Vmware/" style="font-size: 10px;">Vmware</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/个人笔记/" style="font-size: 10px;">个人笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/08/103-new-start/">新的开始</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/18/000-hello-world/">我的HEXO博客开通了</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/102-java-ehcache/">ehcache简单使用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/101-linux-scale/">Red Hat磁盘扩容</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/100-zookeeper/">zookeeper安装及使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 TYZS<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

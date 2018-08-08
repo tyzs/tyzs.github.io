@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>zookeeper安装及使用 | 道虽逊，不行不至。事虽小，不为不成。</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。–百度百科 下面图片说明了ZooKeeper的选举，简单点说同时起了多个服务，一个进程挂了，另外的进程会自动选举出一个老大共享全局配置">
+<meta name="keywords" content="zookeeper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zookeeper安装及使用">
+<meta property="og:url" content="http://yoursite.com/2017/03/22/100-zookeeper/index.html">
+<meta property="og:site_name" content="道虽逊，不行不至。事虽小，不为不成。">
+<meta property="og:description" content="介绍ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。–百度百科 下面图片说明了ZooKeeper的选举，简单点说同时起了多个服务，一个进程挂了，另外的进程会自动选举出一个老大共享全局配置">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/uploads/zookeeper.png">
+<meta property="og:updated_time" content="2017-03-24T02:55:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="zookeeper安装及使用">
+<meta name="twitter:description" content="介绍ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。–百度百科 下面图片说明了ZooKeeper的选举，简单点说同时起了多个服务，一个进程挂了，另外的进程会自动选举出一个老大共享全局配置">
+<meta name="twitter:image" content="http://yoursite.com/uploads/zookeeper.png">
+  
+    <link rel="alternate" href="/atom.xml" title="道虽逊，不行不至。事虽小，不为不成。" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">道虽逊，不行不至。事虽小，不为不成。</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-100-zookeeper" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/100-zookeeper/" class="article-date">
+  <time datetime="2017-03-22T02:25:35.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      zookeeper安装及使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。–<a href="http://baike.baidu.com/link?url=eP4mIp7VKwEDf09dUm-eAlF9cH-hWtcXVrTAR1DNmoythyr8NyZsdCfPq1MRPjcgisY0rMtS4Qwf0gNFmOvbyAs6Ds4hDNGK3DeVQe3VNqu" target="_blank" rel="noopener">百度百科</a></p>
+<p>下面图片说明了ZooKeeper的选举，简单点说同时起了多个服务，一个进程挂了，另外的进程会自动选举出一个老大共享全局配置<br><img src="/uploads/zookeeper.png" alt="插入图片" title="选举机制"><br><a id="more"></a></p>
+<h2 id="安装启动"><a href="#安装启动" class="headerlink" title="安装启动"></a>安装启动</h2><p>前提你本地配置了JDK的环境，下载最新的<a href="http://zookeeper.apache.org/releases.html" target="_blank" rel="noopener">安装包</a>下载解压到一个目录下，去conf文件夹下配置 zoo_sample.cfg 文件，配置后改名为zoo.cfg<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#心跳时间</span></span><br><span class="line">tickTime=2000</span><br><span class="line"><span class="comment">#数据目录</span></span><br><span class="line">dataDir=/home/hwl/zks/zookeeper1/data</span><br><span class="line">dataLogDir=/home/hwl/zks/zookeeper1/<span class="built_in">log</span></span><br><span class="line"><span class="comment">#监听client连接的端口号</span></span><br><span class="line">clientPort=4000</span><br></pre></td></tr></table></figure></p>
+<p>配置好之后，进bin目录下 启动即可<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./zkServer.sh start</span><br></pre></td></tr></table></figure></p>
+<p>测试连接，成功进入zk<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hwl@hwlpc:~/zks/zookeeper1/bin$ ./zkCli.sh  -server  localhost:4000</span><br><span class="line">Connecting to localhost:4000</span><br><span class="line">2017-03-23 16:15:07,156 [myid:] - INFO  [main:Environment@100] - Client environment:zookeeper.version=3.4.8--1, built on 02/06/2016 03:18 GMT</span><br><span class="line">2017-03-23 16:15:07,161 [myid:] - INFO  [main:Environment@100] - Client environment:host.name=hwlpc</span><br><span class="line">2017-03-23 16:15:07,161 [myid:] - INFO  [main:Environment@100] - Client environment:java.version=1.8.0_77</span><br><span class="line">2017-03-23 16:15:07,168 [myid:] - INFO  [main:Environment@100] - Client environment:java.vendor=Oracle Corporation</span><br><span class="line">2017-03-23 16:15:07,168 [myid:] - INFO  [main:Environment@100] - Client environment:java.home=/opt/java/jdk1.8/jre</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置使用"><a href="#配置使用" class="headerlink" title="配置使用"></a>配置使用</h2><p>目前我们项目用到的zk的是配置维护，因为zk分为多层节点，节点上可以配置全局信息，暂时只发现当全局变量在用，具体配置python操作如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding: utf-8 -*-</span></span><br><span class="line">from kazoo.client import KazooClient</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line">class ZkView():</span><br><span class="line">    zk = KazooClient(<span class="string">"127.0.0.1:4000"</span>)</span><br><span class="line">    </span><br><span class="line">    def _convert_nodes(self,nodes=[],node_action=<span class="string">'show'</span>):</span><br><span class="line">        result = []</span><br><span class="line">        <span class="keyword">for</span> node <span class="keyword">in</span> nodes:</span><br><span class="line">            node_data = &#123;<span class="string">"id"</span>: node[<span class="string">'id'</span>], <span class="string">"name"</span>: node[<span class="string">'name'</span>],<span class="string">"pid"</span>:node[<span class="string">'pid'</span>],<span class="string">"value"</span>:node[<span class="string">'value'</span>]&#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> node[<span class="string">'id'</span>] == <span class="string">'1'</span>:</span><br><span class="line">                node_data[<span class="string">'isParent'</span>] = True</span><br><span class="line">                node_data[<span class="string">'deleteable'</span>] = False</span><br><span class="line">                node_data[<span class="string">'createable'</span>] = True</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                node_data[<span class="string">'deleteable'</span>] = True</span><br><span class="line">                node_data[<span class="string">'createable'</span>] = False</span><br><span class="line"></span><br><span class="line">            node_data[<span class="string">'editable'</span>] = False</span><br><span class="line"></span><br><span class="line">            node_data[<span class="string">'path'</span>] = node[<span class="string">'path'</span>]</span><br><span class="line"></span><br><span class="line">            result.append(node_data)</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> result</span><br><span class="line">    </span><br><span class="line">    def get_init_nodes(self):</span><br><span class="line">            result,init_nodes = [],[]</span><br><span class="line">            try:</span><br><span class="line">                self.zk.start()</span><br><span class="line">                <span class="keyword">if</span> not self.zk.exists(<span class="string">'/configs'</span>):</span><br><span class="line">                    self.zk.create(<span class="string">'/configs'</span>,<span class="string">''</span>)</span><br><span class="line">                init_nodes.append(&#123;</span><br><span class="line">                    <span class="string">'id'</span>: <span class="string">'1'</span>,</span><br><span class="line">                    <span class="string">'name'</span>: <span class="string">'configs'</span>,</span><br><span class="line">                    <span class="string">'path'</span>: <span class="string">'/configs'</span>,</span><br><span class="line">                    <span class="string">'pid'</span>: <span class="string">'0'</span>,</span><br><span class="line">                    <span class="string">'value'</span>:<span class="string">''</span></span><br><span class="line">                &#125;)</span><br><span class="line">    </span><br><span class="line">                child_nodes = self.zk.get_children(<span class="string">'/configs'</span>)</span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> xrange(0,len(child_nodes)):</span><br><span class="line">                    node_name = child_nodes[i]</span><br><span class="line">                    node_path = <span class="string">'/configs/'</span> + str(node_name)</span><br><span class="line">                    node_id = node_name</span><br><span class="line">                    node_value, node_meta = self.zk.get(node_path)</span><br><span class="line">                    init_nodes.append(&#123;</span><br><span class="line">                        <span class="string">'id'</span>: node_id,</span><br><span class="line">                        <span class="string">'name'</span>: node_name,</span><br><span class="line">                        <span class="string">'path'</span>: node_path,</span><br><span class="line">                        <span class="string">'pid'</span>:<span class="string">'1'</span>,</span><br><span class="line">                        <span class="string">'value'</span>:node_value</span><br><span class="line">                    &#125;)</span><br><span class="line">    </span><br><span class="line">                result = self._convert_nodes(init_nodes)</span><br><span class="line">    </span><br><span class="line">            except Exception, e:</span><br><span class="line">                <span class="built_in">print</span> e</span><br><span class="line">            finally:</span><br><span class="line">                self.zk.stop()</span><br><span class="line">                self.zk.close()</span><br><span class="line">            <span class="built_in">print</span> <span class="string">'INIT.............................'</span></span><br><span class="line">            <span class="built_in">print</span> json.dumps(result)</span><br><span class="line">            </span><br><span class="line">    def create_node(self, request):</span><br><span class="line">        result = &#123;&#125;</span><br><span class="line">        try:</span><br><span class="line">            nodes = []</span><br><span class="line">            node_action = <span class="string">'create'</span></span><br><span class="line">            name = request.get(<span class="string">'name'</span>).strip()</span><br><span class="line">            value = request.get(<span class="string">'value'</span>)</span><br><span class="line">            id = request.get(<span class="string">'id'</span>)</span><br><span class="line">            id = name</span><br><span class="line">            path = <span class="string">'/configs/'</span> + name</span><br><span class="line">            self.zk.start()</span><br><span class="line">            <span class="keyword">if</span> not self.zk.exists(path):</span><br><span class="line">                self.zk.create(path,str(value))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                raise Exception(u<span class="string">'存在重名的节点,名称%s.'</span> % name)</span><br><span class="line">            nodes.append(&#123;</span><br><span class="line">                <span class="string">'id'</span>: id,</span><br><span class="line">                <span class="string">'name'</span>: name,</span><br><span class="line">                <span class="string">'path'</span>: path,</span><br><span class="line">                <span class="string">'pid'</span>: <span class="string">'1'</span>,</span><br><span class="line">                <span class="string">'value'</span>: value</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">if</span> len(nodes) &gt; 0:</span><br><span class="line">                result[<span class="string">'node'</span>] = self._convert_nodes(nodes, node_action)[0]</span><br><span class="line">        except Exception, e:</span><br><span class="line">                <span class="built_in">print</span> e</span><br><span class="line">        finally:</span><br><span class="line">            self.zk.stop()</span><br><span class="line">            self.zk.close()</span><br><span class="line">            <span class="built_in">print</span> <span class="string">'ADD.................'</span></span><br><span class="line">            <span class="built_in">print</span> json.dumps(result)</span><br><span class="line">    def update_node(self,request):</span><br><span class="line">        result = &#123;&#125;</span><br><span class="line">        try:</span><br><span class="line">            nodes = []</span><br><span class="line">            node_action = <span class="string">'update'</span></span><br><span class="line">            name = request.get(<span class="string">'name'</span>).strip()</span><br><span class="line">            value = request.get(<span class="string">'value'</span>)</span><br><span class="line">            id = name</span><br><span class="line">            path = <span class="string">'/configs/'</span> + name</span><br><span class="line">            self.zk.start()</span><br><span class="line">            <span class="keyword">if</span> not self.zk.exists(path):</span><br><span class="line">                self.zk.create(path, str(value))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.zk.set(path,str(value))</span><br><span class="line">    </span><br><span class="line">            nodes.append(&#123;</span><br><span class="line">                <span class="string">'id'</span>: id,</span><br><span class="line">                <span class="string">'name'</span>: name,</span><br><span class="line">                <span class="string">'path'</span>: path,</span><br><span class="line">                <span class="string">'pid'</span>: <span class="string">'1'</span>,</span><br><span class="line">                <span class="string">'value'</span>: value</span><br><span class="line">            &#125;)</span><br><span class="line">    </span><br><span class="line">            <span class="keyword">if</span> len(nodes) &gt; 0:</span><br><span class="line">                result[<span class="string">'node'</span>] = self._convert_nodes(nodes, node_action)[0]</span><br><span class="line">    </span><br><span class="line">        except Exception, e:</span><br><span class="line">            <span class="built_in">print</span> e</span><br><span class="line">        finally:</span><br><span class="line">            self.zk.stop()</span><br><span class="line">            self.zk.close()</span><br><span class="line">            <span class="built_in">print</span> <span class="string">'UPDATE...............'</span></span><br><span class="line">            <span class="built_in">print</span> json.dumps(result)</span><br><span class="line">    def delete_node(self, request):</span><br><span class="line">        node_name = request.get(<span class="string">'name'</span>)</span><br><span class="line">        result = &#123;&#125;</span><br><span class="line">        try:</span><br><span class="line">            <span class="keyword">if</span> not node_name:</span><br><span class="line">                raise Exception(u<span class="string">'没有在HTTP请求中找到主键(pk).'</span>)</span><br><span class="line">            node_path = <span class="string">''</span></span><br><span class="line">            <span class="keyword">if</span> node_name:</span><br><span class="line">                node_path = <span class="string">'/configs/'</span>+node_name</span><br><span class="line">            self.zk.start()</span><br><span class="line">            <span class="keyword">if</span> self.zk.exists(node_path):</span><br><span class="line">                self.zk.delete(node_path)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                raise Exception(u<span class="string">'没有找path=%s的节点.'</span>%node_path)</span><br><span class="line">            result = &#123;<span class="string">'success'</span>:True&#125;</span><br><span class="line">        except Exception, e:</span><br><span class="line">            <span class="built_in">print</span> e</span><br><span class="line">        finally:</span><br><span class="line">            self.zk.stop()</span><br><span class="line">            <span class="built_in">print</span> (<span class="string">'DELETE...................'</span>)</span><br><span class="line">            <span class="built_in">print</span> json.dumps(result)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    ZkView().get_init_nodes()</span><br><span class="line">    ZkView().create_node(&#123;<span class="string">"name"</span>:<span class="string">'ADD'</span>,<span class="string">"value"</span>:<span class="string">"add"</span>,<span class="string">"id"</span>:2&#125;)</span><br><span class="line">    ZkView().update_node(&#123;<span class="string">"name"</span>:<span class="string">'UPDATE'</span>,<span class="string">"value"</span>:<span class="string">"add"</span>,<span class="string">"id"</span>:2&#125;)</span><br><span class="line">    ZkView().update_node(&#123;<span class="string">"name"</span>:<span class="string">'UPDATE'</span>,<span class="string">"value"</span>:<span class="string">"add"</span>,<span class="string">"id"</span>:2&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="选举集群"><a href="#选举集群" class="headerlink" title="选举集群"></a>选举集群</h2><p>修改zoo.cfg配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#标记时间　</span></span><br><span class="line">tickTime=2000</span><br><span class="line"><span class="comment">#zookeeper集群中的包含多台server, 其中一台为leader, 集群中其余的server为follower.</span></span><br><span class="line"><span class="comment">#initLimit参数配置初始化连接时, follower和leader之间的最长心跳时</span></span><br><span class="line"><span class="comment">#间. 此时该参数设置为5, 说明时间限制为5倍tickTime, 即5*2000=10000ms=10s.</span></span><br><span class="line">initLimit=5</span><br><span class="line"><span class="comment">#该参数配置leader和follower之间发送消息, 请求和应答的最大时间长度. </span></span><br><span class="line"><span class="comment">#此时该参数设置为2, 说明时间限制为2倍tickTime, 即4000ms.</span></span><br><span class="line">syncLimit=2</span><br><span class="line"></span><br><span class="line"><span class="comment">#数据目录</span></span><br><span class="line">dataDir=/home/hwl/zks/zookeeper1/data</span><br><span class="line">dataLogDir=/home/hwl/zks/zookeeper1/<span class="built_in">log</span></span><br><span class="line"><span class="comment">#监听client连接的端口号</span></span><br><span class="line">clientPort=4000 <span class="comment">#这个需要改</span></span><br><span class="line">server.0=127.0.0.1:8880:7770</span><br><span class="line">server.1=127.0.0.1:8881:7771</span><br><span class="line">server.2=127.0.0.1:8882:7772</span><br></pre></td></tr></table></figure></p>
+<p>复制3份由于是本地只能用不同的端口，我用的为4000,4001,4002，如果是不同服务器，请参考下面配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tickTime=2000    </span><br><span class="line">initLimit=5    </span><br><span class="line">syncLimit=2    </span><br><span class="line">dataDir=/home/hwl/zks/zookeeper1/data   </span><br><span class="line">dataLogDir=/home/hwl/zks/zookeeper1/data/<span class="built_in">log</span> </span><br><span class="line">clientPort=4000  </span><br><span class="line">server.1=10.182.39.1:8001:8008</span><br><span class="line">server.2=10.182.39.2:8001:8008  </span><br><span class="line">server.3=10.182.39.3:8001:8008</span><br></pre></td></tr></table></figure></p>
+<p>另：在数据目录data中新建myid文件, 写入一个数字, 该数字表示这是第几号server. 该数字必须和zoo.cfg文件中的server.X中的X对应.(没发现什么用，目测观察用)，同时启动三个服务。<br>任一台服务器上客户商品访问即可看全局配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hwl@hwlpc:~/zks/zookeeper1/bin$ ./zkCli.sh  -server  localhost:4000</span><br></pre></td></tr></table></figure></p>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>目前只发现zk配置维护，至于其它的，暂未发现。 —抟摇直上</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/22/100-zookeeper/" data-id="cjkl8vjua000glurwbwxembyw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zookeeper/">zookeeper</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/22/101-linux-scale/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Red Hat磁盘扩容
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/04/008-framework-apache/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Apache+Tomcat实现数据集群</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2018/">2018</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RedHat/">RedHat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vmware/">Vmware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人笔记/">个人笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2018/" style="font-size: 10px;">2018</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a> <a href="/tags/RedHat/" style="font-size: 20px;">RedHat</a> <a href="/tags/Vmware/" style="font-size: 10px;">Vmware</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/个人笔记/" style="font-size: 10px;">个人笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/08/103-new-start/">新的开始</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/18/000-hello-world/">我的HEXO博客开通了</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/24/102-java-ehcache/">ehcache简单使用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/101-linux-scale/">Red Hat磁盘扩容</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/100-zookeeper/">zookeeper安装及使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 TYZS<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
