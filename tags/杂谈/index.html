@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>ehcache简单使用 | TYZS</title>
+  <title>Tag: 杂谈 | TYZS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简介Ehcache是一种广泛使用的开源Java分布式缓存。主要面向通用缓存,Java EE和轻量级容器。它具有内存和磁盘存储，缓存加载器,缓存扩展,缓存异常处理程序,一个gzip缓存servlet过滤器,支持REST和SOAP api等特点。–百度百科 使用1.java项目中用ehcache 添加ehcache.jar在项目lib 文件夹下，并在java build path 里 add jars">
-<meta name="keywords" content="java">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ehcache简单使用">
-<meta property="og:url" content="http://yoursite.com/2017/03/24/102-java-ehcache/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="TYZS">
+<meta property="og:url" content="http://yoursite.com/tags/杂谈/index.html">
 <meta property="og:site_name" content="TYZS">
-<meta property="og:description" content="简介Ehcache是一种广泛使用的开源Java分布式缓存。主要面向通用缓存,Java EE和轻量级容器。它具有内存和磁盘存储，缓存加载器,缓存扩展,缓存异常处理程序,一个gzip缓存servlet过滤器,支持REST和SOAP api等特点。–百度百科 使用1.java项目中用ehcache 添加ehcache.jar在项目lib 文件夹下，并在java build path 里 add jars">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-03-24T08:51:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ehcache简单使用">
-<meta name="twitter:description" content="简介Ehcache是一种广泛使用的开源Java分布式缓存。主要面向通用缓存,Java EE和轻量级容器。它具有内存和磁盘存储，缓存加载器,缓存扩展,缓存异常处理程序,一个gzip缓存servlet过滤器,支持REST和SOAP api等特点。–百度百科 使用1.java项目中用ehcache 添加ehcache.jar在项目lib 文件夹下，并在java build path 里 add jars">
+<meta name="twitter:title" content="TYZS">
   
     <link rel="alternative" href="/atom.xml" title="TYZS" type="application/atom+xml">
   
@@ -155,191 +150,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-102-java-ehcache" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      ehcache简单使用
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/07/14/002-note-20160714/" class="archive-article-date">
+  	<time datetime="2016-07-14T12:58:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-14</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/07/14/002-note-20160714/">过的好快</a>
     </h1>
   
 
-        
-        <a href="/2017/03/24/102-java-ehcache/" class="archive-article-date">
-  	<time datetime="2017-03-24T07:57:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Ehcache是一种广泛使用的开源Java分布式缓存。主要面向通用缓存,Java EE和轻量级容器。它具有内存和磁盘存储，缓存加载器,缓存扩展,缓存异常处理程序,一个gzip缓存servlet过滤器,支持REST和SOAP api等特点。–<a href="http://baike.baidu.com/link?url=3eS1fyRiE9ThSdFRJU1yb2VX3EDwONci8bYyHnyZFDDB1TxAdn_Jn8W8q-6yLY4qGbPks03zCj8Uw6j7cKeChq" target="_blank" rel="noopener">百度百科</a></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>1.java项目中用ehcache 添加ehcache.jar在项目lib 文件夹下，并在java build path 里 add jars 加入lib下的jar引入依赖jar commons-logging.jar在 meta-inf 文件夹下 manifest.mf 中 runtime classpath 中add 导入 ehcache.jar<br><a id="more"></a><br>2.创建工具类EhcacheUtil （其中 path 为ehcache.xml配置文件的存放路径)，具体代码如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">package webc;</span><br><span class="line"></span><br><span class="line">import java.net.URL;</span><br><span class="line"></span><br><span class="line">import net.sf.ehcache.Cache;</span><br><span class="line">import net.sf.ehcache.CacheManager;</span><br><span class="line">import net.sf.ehcache.Element;</span><br><span class="line"></span><br><span class="line">public class EhcacheUtil &#123;</span><br><span class="line">	private static final String path = <span class="string">"/ehcache/ehcache.xml"</span>;  </span><br><span class="line">    private URL url;  </span><br><span class="line">    private CacheManager manager;  </span><br><span class="line">    private static EhcacheUtil ehCache;  </span><br><span class="line">  </span><br><span class="line">    public <span class="function"><span class="title">EhcacheUtil</span></span>() &#123;  </span><br><span class="line">        url = getClass().getResource(<span class="string">"/ehcache/ehcache.xml"</span>);  </span><br><span class="line">        manager = CacheManager.create(url);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    public static EhcacheUtil <span class="function"><span class="title">getInstance</span></span>() &#123;  </span><br><span class="line">        <span class="keyword">if</span> (ehCache== null) &#123;  </span><br><span class="line">            ehCache= new EhcacheUtil();  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="built_in">return</span> ehCache;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    public void put(String cacheName, String key, Object value) &#123;  </span><br><span class="line">        Cache cache = manager.getCache(cacheName);  </span><br><span class="line">        Element element = new Element(key, value);  </span><br><span class="line">        cache.put(element);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    public Object get(String cacheName, String key) &#123;  </span><br><span class="line">        Cache cache = manager.getCache(cacheName);  </span><br><span class="line">        Element element = cache.get(key);  </span><br><span class="line">        <span class="built_in">return</span> element == null ? null : element.getObjectValue();  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    public Cache get(String cacheName) &#123;  </span><br><span class="line">        <span class="built_in">return</span> manager.getCache(cacheName);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    public void remove(String cacheName, String key) &#123;  </span><br><span class="line">        Cache cache = manager.getCache(cacheName);  </span><br><span class="line">        cache.remove(key);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>4.创建ehcache.xml，在这里主要进行缓存的配置，具体说明如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;ehcache&gt;</span><br><span class="line">    &lt;!-- 指定缓存目录 --&gt;</span><br><span class="line">	&lt;diskStore path=<span class="string">"java.io.tmpdir"</span>/&gt;&lt;!-- 达到内存上限后缓存文件保存位置 --&gt; </span><br><span class="line">	&lt;!-- 默认缓存配置 </span><br><span class="line">       name:缓存名称。 </span><br><span class="line">       maxElementsInMemory：缓存最大个数。 </span><br><span class="line">       eternal:对象是否永久有效，一但设置了，timeout将不起作用。 </span><br><span class="line">       timeToIdleSeconds：设置对象在失效前的允许闲置时间（单位：秒）。仅当eternal=<span class="literal">false</span>对象不是永久有效时使用，可选属性，默认值是0，也就是可闲置时间无穷大。 </span><br><span class="line">       timeToLiveSeconds：设置对象在失效前允许存活时间（单位：秒）。最大时间介于创建时间和失效时间之间。仅当eternal=<span class="literal">false</span>对象不是永久有效时使用，默认是0.，也就是对象存活时间无穷大。 </span><br><span class="line">       overflowToDisk：当内存中对象数量达到maxElementsInMemory时，Ehcache将会对象写到磁盘中。 </span><br><span class="line">       diskSpoolBufferSizeMB：这个参数设置DiskStore（磁盘缓存）的缓存区大小。默认是30MB。每个Cache都应该有自己的一个缓冲区。 </span><br><span class="line">       maxElementsOnDisk：硬盘最大缓存个数。 </span><br><span class="line">       diskPersistent：是否缓存虚拟机重启期数据 Whether the disk store persists between restarts of the Virtual Machine. The default value is <span class="literal">false</span>. </span><br><span class="line">       diskExpiryThreadIntervalSeconds：磁盘失效线程运行时间间隔，默认是120秒。 </span><br><span class="line">       memoryStoreEvictionPolicy：当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。默认策略是LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU（较少使用）。 </span><br><span class="line">       clearOnFlush：内存数量最大时是否清除。 </span><br><span class="line">	--&gt;</span><br><span class="line">	&lt;!--timeToIdleSeconds 当缓存闲置n秒后销毁 --&gt; </span><br><span class="line">	&lt;!--timeToLiveSeconds 当缓存存活n秒后销毁 --&gt;</span><br><span class="line">	&lt;defaultCache </span><br><span class="line">	       maxElementsInMemory=<span class="string">"10000"</span> </span><br><span class="line">	       eternal=<span class="string">"false"</span></span><br><span class="line">		   timeToIdleSeconds=<span class="string">"120"</span> </span><br><span class="line">		   timeToLiveSeconds=<span class="string">"120"</span> </span><br><span class="line">		   overflowToDisk=<span class="string">"true"</span></span><br><span class="line">		   diskPersistent=<span class="string">"false"</span> </span><br><span class="line">    /&gt;</span><br><span class="line">    &lt;!-- name缓存名称 --&gt;  </span><br><span class="line">    &lt;cache   </span><br><span class="line">        name=<span class="string">"mytest"</span> </span><br><span class="line">        memoryStoreEvictionPolicy=<span class="string">"LRU"</span>   </span><br><span class="line">        maxElementsInMemory=<span class="string">"1"</span>   </span><br><span class="line">        eternal=<span class="string">"false"</span>  </span><br><span class="line">        timeToIdleSeconds=<span class="string">"7200"</span>  </span><br><span class="line">        timeToLiveSeconds=<span class="string">"7200"</span>   </span><br><span class="line">        overflowToDisk=<span class="string">"true"</span> /&gt; </span><br><span class="line">&lt;/ehcache&gt;</span><br></pre></td></tr></table></figure></p>
-<p>5.主程序中的使用（代码中“mytest”为ehcache.xml中定义的缓存名称）下面上测试代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		String ClassName = Thread.currentThread().getStackTrace()[2].getClassName(); // 类名   </span><br><span class="line">        String MethodName= Thread.currentThread().getStackTrace()[2].getMethodName(); //获取方法名 </span><br><span class="line">        String key=ClassName+MethodName;</span><br><span class="line">        </span><br><span class="line">		EhcacheUtil eh=new EhcacheUtil();</span><br><span class="line">		<span class="keyword">if</span>(eh.get(<span class="string">"mytest"</span>, key)!=<span class="string">""</span>&amp;&amp;eh.get(<span class="string">"mytest"</span>, key)!=null)&#123;</span><br><span class="line">			System.out.println(<span class="string">"1"</span>+eh.get(<span class="string">"mytest"</span>, key));</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	        eh.put(<span class="string">"mytest"</span>, key, <span class="string">"value"</span>);  </span><br><span class="line">	        System.out.println(<span class="string">"2"</span>+eh.get(<span class="string">"mytest"</span>, key));  </span><br><span class="line">		&#125;</span><br><span class="line">        </span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
-<p>6.另一种情况，也可以这样配置:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">URL url = getClass().getResource(<span class="string">"/ehcache/ehcache.xml"</span>);  </span><br><span class="line">		CacheManager singletonManager = CacheManager.create(url);</span><br><span class="line">        //建立一个缓存实例</span><br><span class="line">        Cache memoryOnlyCache = new Cache(<span class="string">"testCache"</span>, 5000, <span class="literal">false</span>, <span class="literal">false</span>, 5, 2);</span><br><span class="line">        //在内存管理器中添加缓存实例</span><br><span class="line">        singletonManager.addCache(memoryOnlyCache);</span><br><span class="line">        Cache cache = singletonManager.getCache(<span class="string">"testCache"</span>);</span><br><span class="line">        //使用缓存</span><br><span class="line">        Element element = new Element(<span class="string">"key1"</span>, <span class="string">"value1"</span>);</span><br><span class="line">        cache.put(element);</span><br><span class="line">        cache.put(new Element(<span class="string">"key1"</span>, <span class="string">"value2"</span>));</span><br><span class="line"></span><br><span class="line">        element = cache.get(<span class="string">"key1"</span>);</span><br><span class="line">        Serializable value = element.getValue();</span><br><span class="line">        System.out.println(value);</span><br><span class="line"></span><br><span class="line">        int elementsInMemory = cache.getSize();</span><br><span class="line">        System.out.println(elementsInMemory);</span><br><span class="line"></span><br><span class="line">        long elementsInMemory2 = cache.getMemoryStoreSize();</span><br><span class="line">        System.out.println(elementsInMemory2);</span><br><span class="line"></span><br><span class="line">        Object obj = element.getObjectValue();</span><br><span class="line">        cache.remove(<span class="string">"key1"</span>);</span><br><span class="line">        System.out.println(obj);</span><br><span class="line">        singletonManager.shutdown();</span><br><span class="line">        // manager.shutdown();</span><br><span class="line">        System.out.println(2);</span><br></pre></td></tr></table></figure></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上来自 屈东慧 美女收藏总结，如果喜欢欢迎点赞。</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29966565&auto=1&height=66"></iframe>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://note.youdao.com/yws/api/personal/file/WEBa71891681c3aa082d1d348738e455fb9?method=download&amp;shareKey=e8418a1d3f4083cd9580da6d5ce1aba0">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://note.youdao.com/yws/api/personal/file/WEB16348ae1a70fd6f22b8e18cee8da005c?method=download&amp;shareKey=ffda9c74b0cd9afca45104749556c595">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/03/24/102-java-ehcache/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/08/08/103-new-start/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          新的开始
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/03/22/101-linux-scale/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Red Hat磁盘扩容</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -362,9 +226,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

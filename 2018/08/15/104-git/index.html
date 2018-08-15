@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 个人笔记 | TYZS</title>
+  <title>git学习笔记 | TYZS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="TYZS">
-<meta property="og:url" content="http://yoursite.com/tags/个人笔记/index.html">
+  <meta name="description" content="先前接触的git不系统，会一些常用命令，最近得空，补充下知识点。 git diff 查看修改内容1tyzsdeMacBook-Air:testgit tyzs$ git diff readme.txt 日志查看方式1234567tyzsdeMacBook-Air:testgit tyzs$ git logtyzsdeMacBook-Air:testgit tyzs$ git log --prett">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/08/15/104-git/index.html">
 <meta property="og:site_name" content="TYZS">
+<meta property="og:description" content="先前接触的git不系统，会一些常用命令，最近得空，补充下知识点。 git diff 查看修改内容1tyzsdeMacBook-Air:testgit tyzs$ git diff readme.txt 日志查看方式1234567tyzsdeMacBook-Air:testgit tyzs$ git logtyzsdeMacBook-Air:testgit tyzs$ git log --prett">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-15T13:08:57.145Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TYZS">
+<meta name="twitter:title" content="git学习笔记">
+<meta name="twitter:description" content="先前接触的git不系统，会一些常用命令，最近得空，补充下知识点。 git diff 查看修改内容1tyzsdeMacBook-Air:testgit tyzs$ git diff readme.txt 日志查看方式1234567tyzsdeMacBook-Air:testgit tyzs$ git logtyzsdeMacBook-Air:testgit tyzs$ git log --prett">
   
     <link rel="alternative" href="/atom.xml" title="TYZS" type="application/atom+xml">
   
@@ -150,60 +155,204 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-104-git" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/14/002-note-20160714/" class="archive-article-date">
-  	<time datetime="2016-07-14T12:58:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/14/002-note-20160714/">过的好快</a>
+    <h1 class="article-title" itemprop="name">
+      git学习笔记
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/08/15/104-git/" class="archive-article-date">
+  	<time datetime="2018-08-15T12:29:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先前接触的git不系统，会一些常用命令，最近得空，补充下知识点。</p>
+<h3 id="git-diff-查看修改内容"><a href="#git-diff-查看修改内容" class="headerlink" title="git diff 查看修改内容"></a>git diff 查看修改内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tyzsdeMacBook-Air:testgit tyzs$ git diff readme.txt</span><br></pre></td></tr></table></figure>
+<h3 id="日志查看方式"><a href="#日志查看方式" class="headerlink" title="日志查看方式"></a>日志查看方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tyzsdeMacBook-Air:testgit tyzs$ git <span class="built_in">log</span></span><br><span class="line"></span><br><span class="line">tyzsdeMacBook-Air:testgit tyzs$ git <span class="built_in">log</span> --pretty=oneline</span><br><span class="line">d0e6a50fc7f719c877a9bf3aad83ad2915d043b2 (HEAD -&gt; master) append GPL  <span class="comment">#当前版本 由近及远</span></span><br><span class="line">35dff8cf368728ff2ac2482b3f354cbab63c1d96 update33</span><br><span class="line">fdec0e67b882fee993d296aed13f322a1f62d9ba add 23</span><br><span class="line">647d4c085aeef5afd23b73f3ae3b6066b335096c my remeade.txt</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">tyzsdeMacBook-Air:testgit tyzs$ git reset --hard HEAD^ <span class="comment">#返回到上一个版本上上一个版本就是HEAD^^，当然往上100个版本写成HEAD~100。</span></span><br><span class="line">HEAD is now at 35dff8c update33</span><br><span class="line"></span><br><span class="line">tyzsdeMacBook-Air:testgit tyzs$ git reset --hard d0e6a  <span class="comment">#回退的另一种写法</span></span><br><span class="line"></span><br><span class="line">tyzsdeMacBook-Air:testgit tyzs$ git reflog  <span class="comment">#记录你的每一次命令</span></span><br><span class="line">d0e6a50 (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to d0e6a</span><br><span class="line">35dff8c HEAD@&#123;1&#125;: reset: moving to HEAD^</span><br><span class="line">d0e6a50 (HEAD -&gt; master) HEAD@&#123;2&#125;: commit: append GPL</span><br><span class="line">35dff8c HEAD@&#123;3&#125;: commit: update33</span><br><span class="line">fdec0e6 HEAD@&#123;4&#125;: commit: add 23</span><br><span class="line">647d4c0 HEAD@&#123;5&#125;: commit (initial): my remeade.txt</span><br></pre></td></tr></table></figure>
+<p>HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard commit_id。</span><br></pre></td></tr></table></figure></p>
+<p>穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。</p>
+<p>要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。  </p>
+<h3 id="丢弃工作区"><a href="#丢弃工作区" class="headerlink" title="丢弃工作区"></a>丢弃工作区</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hwl@hwl-pc:~/testgit$ git checkout -- log.txt <span class="comment">#可以丢弃工作区的修改</span></span><br><span class="line">git checkout -- file命令中的--很重要，没有--，就变成了“切换到另一个分支”的命令</span><br><span class="line">hwl@hwl-pc:~/testgit$ git reset HEAD log.txt <span class="comment">#可以把暂存区的修改撤销掉 回到工作区(撤销git add 操作)</span></span><br><span class="line">hwl@hwl-pc:~/testgit$ git rm  demo.txt~ <span class="comment">#删除一个文件  要用并且git commit提交删除</span></span><br></pre></td></tr></table></figure>
+<h3 id="关联GITHUB"><a href="#关联GITHUB" class="headerlink" title="关联GITHUB"></a>关联GITHUB</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span> <span class="comment">#创建远程仓库KEY</span></span><br><span class="line"></span><br><span class="line">root@hwl-pc:/home/hwl/testgit<span class="comment"># git remote  add origin git@github.com:tyzs/gittest #和github建立远程关联</span></span><br><span class="line"></span><br><span class="line">root@hwl-pc:/home/hwl/testgit<span class="comment"># git push -u origin master  #第一次推送 (适用于手动关联远程库的情况)</span></span><br><span class="line"></span><br><span class="line">git push origin master推送最新修改</span><br></pre></td></tr></table></figure>
+<h3 id="克隆-最帅功能"><a href="#克隆-最帅功能" class="headerlink" title="克隆 最帅功能"></a>克隆 最帅功能</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:tyzsgh/cpgite.git  <span class="comment">#克隆git上的tyzsgh/cpgite.git库到本地 并且会自动创建一个文件夹 cpgite</span></span><br></pre></td></tr></table></figure>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">root@hwl-pc:/home/hwl/testgit<span class="comment"># git branch dev  #创建一个分支dev</span></span><br><span class="line">root@hwl-pc:/home/hwl/testgit<span class="comment"># git checkout dev #切换分支到dev</span></span><br><span class="line">切换到分支 <span class="string">'dev'</span></span><br><span class="line"></span><br><span class="line">root@hwl-pc:/home/hwl/testgit<span class="comment"># git branch #查看所有分支  当前分支会加一个 * 号</span></span><br><span class="line">* dev</span><br><span class="line">  master</span><br><span class="line"></span><br><span class="line">root@hwl-pc:/home/hwl/testgit<span class="comment"># git merge dev  #合并指定分支（dev）到当前分支</span></span><br><span class="line">root@hwl-pc:/home/hwl/testgit<span class="comment"># git branch -d dev  #删除分支</span></span><br></pre></td></tr></table></figure>
+<p>已删除分支 dev（曾为 d5c487b）。查看分支：git branch<br>创建分支：git branch <name><br>切换分支：git checkout <name><br>创建+切换分支：git checkout -b <name><br>合并某分支到当前分支：git merge <name><br>删除分支：git branch -d <name></name></name></name></name></name></p>
+<p>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，我们修改如下后保存：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git <span class="built_in">log</span> --graph --pretty=oneline --abbrev-commit <span class="comment">#查看分支合并情况 </span></span><br><span class="line">*   b00655c (HEAD -&gt; master) new upd 555</span><br><span class="line">|\  </span><br><span class="line">| * 51bc536 (feature1) upd</span><br><span class="line">* | 38bc1d4 upd master</span><br><span class="line">|/  </span><br><span class="line">* e6a50d1 add dev</span><br><span class="line">* 3060687 updat</span><br><span class="line">* 860bf31 update</span><br><span class="line">* c69c192 com2</span><br><span class="line">* 477a96c com1</span><br><span class="line">* c8b65bc (origin/master, origin/HEAD) mytest</span><br><span class="line">* 80a647b update</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git merge --no-ff -m <span class="string">"merge with no-ff"</span> dev  <span class="comment">#普通模式合并 dev到当前分支，保留dev历史分支</span></span><br></pre></td></tr></table></figure>
+<h3 id="暂存工作"><a href="#暂存工作" class="headerlink" title="暂存工作"></a>暂存工作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git stash <span class="comment">#存储当前工作</span></span><br><span class="line">Saved working directory and index state WIP on dev: 750272f add dev.txt</span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git stash list <span class="comment">#查看已存储的工作区</span></span><br><span class="line">stash@&#123;0&#125;: WIP on dev: 750272f add dev.txt</span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git stash apply stash@&#123;0&#125;  <span class="comment">#恢复到指定的工作存储区</span></span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git stash drop stash@&#123;0&#125;  <span class="comment">#恢复到指定的工作存储区 并删除存储区</span></span><br></pre></td></tr></table></figure>
+<p>当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。</p>
+<p>分支还没有被合并，如果删除，将丢失掉修改，如果要强行删除，需要使用大写的-D参数 强行删除：<br>$ git branch -D test  #强行删除一个没被合并过的分支 ，并失掉修改过的数据</p>
+<h3 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git remote  <span class="comment">#查看远程库信息</span></span><br><span class="line">origin</span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git remote  -v <span class="comment">#查看远程库详细信息  如果没有 push 则说明没有推送权限</span></span><br><span class="line">origin	git@github.com:tyzs/gittest.git (fetch)</span><br><span class="line">origin	git@github.com:tyzs/gittest.git (push)</span><br></pre></td></tr></table></figure>
+<p><strong><em>从远程库clone时，默认情况下，只能看到本地的master分支,如果需要其它分支，需手动创建然后设置如下:</em></strong><br><strong><em>git branch –set-upstream-to=origin/dev dev  再git pull 即可获得</em></strong></p>
+<p>多人协作的工作模式通常是这样：<br>git push origin <branch-name>推送自己的修改；<br>如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；<br>如果合并有冲突，则解决冲突，并在本地提交；<br>没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！<br>如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch –set-upstream-to=origin/dev dev  </branch-name></branch-name></p>
+<h3 id="git标签管理"><a href="#git标签管理" class="headerlink" title="git标签管理"></a>git标签管理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git tag v1.0 <span class="comment">#打标签</span></span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git tag <span class="comment">#查看标签列表</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git <span class="built_in">log</span> --pretty=oneline </span><br><span class="line">750272f644bd3049ecb764f58183ae5e91e153e9 (HEAD -&gt; dev, tag: v1.0, origin/dev) add dev.txt</span><br><span class="line">b00655cb7c517d74929f980118f76fe3cd59bce4 new upd 555</span><br><span class="line">38bc1d44d1f17ee3ca0b9733ab18963adfc17d6c upd master</span><br><span class="line">51bc53651b720bc65eace232ccce824d88637fd4 upd</span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git tag v0.9 51bc53 <span class="comment">#根据提交日志找到指定commit  id打标签 </span></span><br><span class="line"></span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git show v0.9  <span class="comment">#查看该标签说明</span></span><br><span class="line">commit 51bc53651b720bc65eace232ccce824d88637fd4 (tag: v0.9, tag: show)</span><br><span class="line">Author: hexo_blog &lt;965224421@qq.com&gt;</span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git tag -a v0.1 -m <span class="string">"version 0.1 released"</span> 401026  <span class="comment">#-a 指定标签名 -m指定说明文字 </span></span><br><span class="line"></span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git tag -d v0.1 <span class="comment">#删除标签</span></span><br><span class="line"></span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git push origin v0.9 <span class="comment">#推送标签到远程服务器</span></span><br><span class="line">Total 0 (delta 0), reused 0 (delta 0)</span><br><span class="line">To github.com:tyzs/gittest.git</span><br><span class="line"> * [new tag]         v0.9 -&gt; v0.9</span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git push origin --tags <span class="comment">#推送所有标签到远程服务器</span></span><br><span class="line">Counting objects: 1, <span class="keyword">done</span>.</span><br><span class="line">Writing objects: 100% (1/1), 166 bytes | 166.00 KiB/s, <span class="keyword">done</span>.</span><br><span class="line">Total 1 (delta 0), reused 0 (delta 0)</span><br><span class="line">To github.com:tyzs/gittest.git</span><br><span class="line"> * [new tag]         v0.1 -&gt; v0.1</span><br><span class="line"> * [new tag]         v1.0 -&gt; v1.0</span><br></pre></td></tr></table></figure>
+<p>删除一个远程服务器的标签  先从本地删除 然后再推到远程服务器 如下两步<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git tag -d  v0.1  </span><br><span class="line">Deleted tag <span class="string">'v0.1'</span> (was 161e8bd)</span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git push origin :refs/tags/v0.1</span><br><span class="line">To github.com:tyzs/gittest.git</span><br><span class="line"> - [deleted]         v0.1</span><br></pre></td></tr></table></figure></p>
+<h3 id="gitignore使用"><a href="#gitignore使用" class="headerlink" title=".gitignore使用"></a>.gitignore使用</h3><p>git提交，如果要忽略某种文件 ，可以在工作目录，添加一个.gitignore  然后在该配信息中添加自己要忽略的文件 ，如.pyc<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tyzsdeMacBook-Air:gittest tyzs$ ls -ah</span><br><span class="line">.		.gitignore	demo.txt	log.txt~</span><br><span class="line">..		a.pyc		dev.txt		my.txt</span><br><span class="line">.git		a.txt		log.txt		readme.txt</span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ cat .gitignore </span><br><span class="line">*.pyc</span><br><span class="line">*.class</span><br></pre></td></tr></table></figure></p>
+<h3 id="为GIT配置别名"><a href="#为GIT配置别名" class="headerlink" title="为GIT配置别名"></a>为GIT配置别名</h3><p>一种方式 直接配<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git config --global alias.st status</span><br><span class="line">tyzsdeMacBook-Air:gittest tyzs$ git st</span><br><span class="line">On branch master</span><br><span class="line">Your branch is ahead of <span class="string">'origin/master'</span> by 1 commit.</span><br></pre></td></tr></table></figure></p>
+<p>第二种方式 个性git配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">tyzsdeMacBook-Air:gittest tyzs$ cat .git/config </span><br><span class="line">[core]</span><br><span class="line">	repositoryformatversion = 0</span><br><span class="line">	filemode = <span class="literal">true</span></span><br><span class="line">	bare = <span class="literal">false</span></span><br><span class="line">	logallrefupdates = <span class="literal">true</span></span><br><span class="line">	ignorecase = <span class="literal">true</span></span><br><span class="line">	precomposeunicode = <span class="literal">true</span></span><br><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">	url = git@github.com:tyzs/gittest.git</span><br><span class="line">	fetch = +refs/heads/*:refs/remotes/origin/*</span><br><span class="line">[branch <span class="string">"master"</span>]</span><br><span class="line">	remote = origin</span><br><span class="line">	merge = refs/heads/master</span><br><span class="line">[<span class="built_in">alias</span>]</span><br><span class="line">  <span class="built_in">stat</span> = status</span><br></pre></td></tr></table></figure></p>
+<p>以上内容据<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" title="博客" target="_blank" rel="noopener">廖雪峰老师</a> GIT文章做的个人总结，特此说明。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://note.youdao.com/yws/api/personal/file/WEBa71891681c3aa082d1d348738e455fb9?method=download&amp;shareKey=e8418a1d3f4083cd9580da6d5ce1aba0">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://note.youdao.com/yws/api/personal/file/WEB16348ae1a70fd6f22b8e18cee8da005c?method=download&amp;shareKey=ffda9c74b0cd9afca45104749556c595">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">个人笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/15/104-git/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/08/08/103-new-start/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">新的开始</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -226,9 +375,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -300,11 +449,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vmware</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人笔记</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vmware</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -312,7 +461,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -320,19 +469,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color2">Apache</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">2018</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>
@@ -403,7 +548,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">完美主义着&lt;br&gt;&lt;br&gt;强迫症患者&lt;br&gt;</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">完美主义者&lt;br&gt;&lt;br&gt;强迫症患者&lt;br&gt;</div>
   	  	
     	</section>
     
